@@ -16,6 +16,7 @@
     "tailwindcss": "^3.2.7"
   },
   "dependencies": {
-    "@nuxtjs/google-fonts": "^3.0.0"
+    "@nuxtjs/google-fonts": "^3.0.0",
+    "@nuxtjs/netlify-files": "^1.2.0"
   }
 }
