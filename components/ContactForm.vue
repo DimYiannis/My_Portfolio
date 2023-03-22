@@ -1,5 +1,12 @@
 <template>
-    <form class="min-w-max  mx-auto tablet:mx-20 " netlify netlify-honeypot="bot-field" @submit.prevent="submitForm">
+    <form class="min-w-max  mx-auto tablet:mx-20 "
+    name="contact" 
+    netlify 
+    netlify-honeypot="bot-field" 
+    @submit.prevent="submitForm">
+      
+      <input type="hidden" name="form-name" value="contact"/>
+      
           <div class="mb-4">
             <label class="block font-bold mb-2" for="name">
               Name
