@@ -1,5 +1,5 @@
 <template>
-    <form class="min-w-max  mx-auto tablet:mx-20 ">
+    <form class="min-w-max  mx-auto tablet:mx-20 " netlify netlify-honeypot="bot-field" @submit.prevent="submitForm">
           <div class="mb-4">
             <label class="block font-bold mb-2" for="name">
               Name
