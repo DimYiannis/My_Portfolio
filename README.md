@@ -2,29 +2,25 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+
+
 ## Setup
 
-Make sure to install the dependencies:
 
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
+1. Clone the repo
+``` sh
+git clone https://github.com/DimYiannis/My_Portfolio
 ```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Run NPM script
 
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
+ Run app in development mode:
+``` sh 
 npm run dev
 ```
-
 ## Production
 
 Build the application for production:
@@ -38,5 +34,7 @@ Locally preview production build:
 ```bash
 npm run preview
 ```
+## Deploy Project
+
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
