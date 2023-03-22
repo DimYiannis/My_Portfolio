@@ -6,6 +6,8 @@ export default defineNuxtConfig({
         '@nuxtjs/google-fonts', 
     ],
 
+    
+
     googleFonts: {
       families: {
         'Open+Sans': true,
@@ -15,8 +17,20 @@ export default defineNuxtConfig({
       }
     },
     
+   
+      
+    // Defaults options
+    tailwindcss: {
+      cssPath: '~/assets/css/tailwind.css',
+      configPath: 'tailwind.config',
+      exposeConfig: false,
+      config: {},
+      injectPosition: 0,
+      viewer: true,
+    },
+  
     build: {},
-
+  
     css: ['~/assets/css/tailwind.css'],
     postcss: {
         plugins: {
