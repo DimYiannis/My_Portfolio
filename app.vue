@@ -64,7 +64,7 @@
 
     <!--Skills section-->
     <div class="mt-10 border-y-2 border-sky-500 group 
-      hover:border-white grid lgdesk:border-0" >
+      hover:border-white grid desktop:border-0" >
       <div class="text-white text-3xl group-hover:text-sky-500/90 
       font-semibold text-center my-5 "
       >Web Stack</div>
