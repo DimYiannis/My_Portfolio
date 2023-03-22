@@ -9,7 +9,7 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 
 1. Clone the repo
 ``` sh
-git clone https://github.com/DimYiannis/Meet-in-Thessaloniki.git
+git clone https://github.com/DimYiannis/My_Portfolio
 ```
 2. Install NPM packages
 ```sh
