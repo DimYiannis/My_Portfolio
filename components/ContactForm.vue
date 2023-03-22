@@ -21,7 +21,7 @@
               >
           </div>
           <div class="mb-4">
-            <label class="block font-bold mb-2" for="email">
+            <label class="block font-bold mb-2" name="email">
               Email
             </label>
             <input
@@ -33,7 +33,7 @@
             >
           </div>
           <div class="mb-4">
-            <label class="block font-bold mb-2" for="message">
+            <label class="block font-bold mb-2" name="message">
               Message
             </label>
             <textarea
