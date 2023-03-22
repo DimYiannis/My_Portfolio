@@ -1,8 +1,9 @@
 <template>
     <form class="min-w-max  mx-auto tablet:mx-20 "
     name="contact" 
-    netlify 
-    netlify-honeypot="bot-field" 
+    method="post"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field" 
     @submit.prevent="submitForm">
       
       <input type="hidden" name="form-name" value="contact"/>
