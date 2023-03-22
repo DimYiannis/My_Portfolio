@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import {resolve} from "path";
 export default defineNuxtConfig({
 
     modules: [
@@ -6,7 +7,9 @@ export default defineNuxtConfig({
         '@nuxtjs/google-fonts', 
     ],
 
-    
+    alias: {
+      "@": resolve(__dirname, "/"),
+    },
 
     googleFonts: {
       families: {
@@ -16,8 +19,6 @@ export default defineNuxtConfig({
         }
       }
     },
-    
-   
       
     // Defaults options
     tailwindcss: {
