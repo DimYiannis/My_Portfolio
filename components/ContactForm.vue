@@ -9,39 +9,48 @@
       <input type="hidden" name="form-name" value="contact"/>
       
           <div class="mb-4">
-            <label class="block font-bold mb-2" for="name">
+            <label class="block font-bold mb-2" >
               Name
-            </label>
-            <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
+              leading-tight focus:outline-none focus:shadow-outline"
+              name="name"
               id="name"
               type="text"
               placeholder="Enter your name"
               v-model="name"
               >
+            </label>
+            
           </div>
           <div class="mb-4">
-            <label class="block font-bold mb-2" name="email">
+            <label class="block font-bold mb-2" >
               Email
-            </label>
-            <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
+              leading-tight focus:outline-none focus:shadow-outline"
+              name="email"
               id="email"
               type="email"
               placeholder="Enter your email"
               v-model="email"
             >
+            </label>
+            
           </div>
           <div class="mb-4">
-            <label class="block font-bold mb-2" name="message">
+            <label class="block font-bold mb-2" >
               Message
-            </label>
-            <textarea
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              <textarea
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
+              leading-tight focus:outline-none focus:shadow-outline"
+              name="message"
               id="message"
               placeholder="Enter your message"
               v-model="message"
             ></textarea>
+            </label>
+            
           </div>
           <div class="flex items-center justify-between">
             <button
