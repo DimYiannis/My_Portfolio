@@ -1,12 +1,11 @@
 <template>
     <form class="min-w-max  mx-auto tablet:mx-20 "
-    name="contact" 
+    name="contact"
+    method="POST" 
     netlify
     @submit.prevent="submitForm">
       
-      <input type="hidden" name="form-name" value="contact"/>
-      
-          <div class="mb-4">
+          <p class="mb-4">
             <label class="block font-bold mb-2" for="name" >
               Name
             </label>
@@ -21,8 +20,8 @@
               v-model="name"
               >
             
-          </div>
-          <div class="mb-4">
+          </p>
+          <p class="mb-4">
             <label class="block font-bold mb-2" for="email" >
               Email
               
@@ -37,8 +36,8 @@
               placeholder="Enter your email"
               v-model="email"
             >
-          </div>
-          <div class="mb-4">
+          </p>
+          <p class="mb-4">
             <label class="block font-bold mb-2" for="message">
               Message
               
@@ -53,8 +52,8 @@
               v-model="message"
             ></textarea>
 
-          </div>
-          <div class="flex items-center justify-between">
+          </p>
+          <p class="flex items-center justify-between">
             <button
               class="bg-sky-500/40 hover:bg-sky-500/80 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
@@ -62,13 +61,13 @@
             >
               Submit
             </button>
-          </div>
-          <div
+          </p>
+          <p
             class="bg-sky-500/40 text-white rounded-lg p-3 mt-3"
             v-show="showTooltip"
           >
             Form submitted successfully!
-          </div>
+          </p>
         </form>
 </template>
 
