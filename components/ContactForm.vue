@@ -7,7 +7,7 @@
     netlify-honeypot="bot-field"
     @submit.prevent="submitForm">
       
-    <input type="hidden" name="contact" value="contact" />
+    <input type="hidden" name="form-name" value="contact" />
     <p hidden>
 		  <label> 
         <input name="bot-field" />
