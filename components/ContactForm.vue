@@ -81,11 +81,36 @@
 
 <script>
 
-const submitForm = async (e) => {
-  const isFormCorrect = await v$.value.$validate();
-  if (!isFormCorrect) {
-    e.preventDefault();
-  }
-  return;
-};
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      message: '',
+      showTooltip: false, // initialize to false
+    }
+  },
+  methods: {
+    async submitForm() {
+        // do something with the form data
+        console.log(`Name: ${this.name}`);
+        console.log(`Email: ${this.email}`);
+        console.log(`Message: ${this.message}`);
+
+        // Reset the form
+        this.name = '';
+        this.email = '';
+        this.message = '';
+        
+        // show the tooltip
+        this.showTooltip = true;
+
+    // hide the tooltip after 3 seconds
+    setTimeout(() => {
+        this.showTooltip = false;
+      }, 5000);
+    },
+    
+  },
+}
 </script>
