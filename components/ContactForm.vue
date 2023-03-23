@@ -4,8 +4,8 @@
     method="POST" 
     action="/success"
     data-netlify="true"
-    data-netlify-honeypot="bot-field"
-    @submit.prevent="submitForm">
+    netlify-honeypot="bot-field"
+    @submit="submitForm($event)">
       
     <input type="hidden" name="contact" value="contact" />
     <p hidden>
