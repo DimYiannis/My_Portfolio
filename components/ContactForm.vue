@@ -1,17 +1,17 @@
 <template>
     <form class="min-w-max  mx-auto tablet:mx-20 "
     name="contact" 
-    method="POST"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field" 
+    netlify="true"
     @submit.prevent="submitForm">
       
       <input type="hidden" name="form-name" value="contact"/>
       
           <div class="mb-4">
-            <label class="block font-bold mb-2" >
+            <label class="block font-bold mb-2" for="name" >
               Name
-              <input
+            </label>
+
+            <input
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
               leading-tight focus:outline-none focus:shadow-outline"
               name="name"
@@ -20,13 +20,15 @@
               placeholder="Enter your name"
               v-model="name"
               >
-            </label>
             
           </div>
           <div class="mb-4">
-            <label class="block font-bold mb-2" >
+            <label class="block font-bold mb-2" for="email" >
               Email
-              <input
+              
+            </label>
+
+            <input
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
               leading-tight focus:outline-none focus:shadow-outline"
               name="email"
@@ -35,13 +37,14 @@
               placeholder="Enter your email"
               v-model="email"
             >
-            </label>
-            
           </div>
           <div class="mb-4">
-            <label class="block font-bold mb-2" >
+            <label class="block font-bold mb-2" for="message">
               Message
-              <textarea
+              
+            </label>
+
+            <textarea
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 
               leading-tight focus:outline-none focus:shadow-outline"
               name="message"
@@ -49,8 +52,7 @@
               placeholder="Enter your message"
               v-model="message"
             ></textarea>
-            </label>
-            
+
           </div>
           <div class="flex items-center justify-between">
             <button
