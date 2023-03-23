@@ -1,7 +1,7 @@
 <template>
     <form class="min-w-max  mx-auto tablet:mx-20 "
     name="contact" 
-    netlify="true"
+    netlify
     @submit.prevent="submitForm">
       
       <input type="hidden" name="form-name" value="contact"/>
