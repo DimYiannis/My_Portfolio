@@ -2,9 +2,15 @@
     <form class="min-w-max  mx-auto tablet:mx-20 "
     name="contact"
     method="POST" 
-    netlify
-    @submit.prevent="submitForm">
+    action="/success"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    @submit="submitForm($event)">
       
+    <input type="hidden" name="contact" value="contact" />
+    <p hidden>
+		  <label> <input name="bot-field" /></label>
+	  </p>
           <p class="mb-4">
             <label class="block font-bold mb-2" for="name" >
               Name
@@ -71,38 +77,13 @@
         </form>
 </template>
 
-<script>
+<script setup>
 
-export default {
-  data() {
-    return {
-      name: '',
-      email: '',
-      message: '',
-      showTooltip: false, // initialize to false
-    }
-  },
-  methods: {
-    submitForm() {
-        // do something with the form data
-        console.log(`Name: ${this.name}`);
-        console.log(`Email: ${this.email}`);
-        console.log(`Message: ${this.message}`);
-
-        // Reset the form
-        this.name = '';
-        this.email = '';
-        this.message = '';
-        
-        // show the tooltip
-        this.showTooltip = true;
-
-    // hide the tooltip after 3 seconds
-    setTimeout(() => {
-        this.showTooltip = false;
-      }, 5000);
-    },
-    
-  },
-}
+const submitForm = async (e) => {
+  const isFormCorrect = await v$.value.$validate();
+  if (!isFormCorrect) {
+    e.preventDefault();
+  }
+  return;
+};
 </script>
