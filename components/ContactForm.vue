@@ -64,18 +64,13 @@
           <p class="flex items-center justify-between">
             <button
               class="bg-sky-500/40 hover:bg-sky-500/80 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-              @click="submitForm"
+              type="submit"
+              
             >
               Submit
             </button>
           </p>
-          <p
-            class="bg-sky-500/40 text-white rounded-lg p-3 mt-3"
-            v-show="showTooltip"
-          >
-            Form submitted successfully!
-          </p>
+          
         </form>
 </template>
 
@@ -87,7 +82,6 @@ export default {
       name: '',
       email: '',
       message: '',
-      showTooltip: false, // initialize to false
     }
   },
   methods: {
@@ -102,13 +96,6 @@ export default {
         this.email = '';
         this.message = '';
         
-        // show the tooltip
-        this.showTooltip = true;
-
-    // hide the tooltip after 3 seconds
-    setTimeout(() => {
-        this.showTooltip = false;
-      }, 5000);
     },
     
   },
