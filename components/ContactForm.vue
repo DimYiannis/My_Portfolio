@@ -84,20 +84,5 @@ export default {
       message: '',
     }
   },
-  methods: {
-    async submitForm() {
-        // do something with the form data
-        console.log(`Name: ${this.name}`);
-        console.log(`Email: ${this.email}`);
-        console.log(`Message: ${this.message}`);
-
-        // Reset the form
-        this.name = '';
-        this.email = '';
-        this.message = '';
-        
-    },
-    
-  },
 }
 </script>
