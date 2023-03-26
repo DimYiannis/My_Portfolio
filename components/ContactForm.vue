@@ -95,9 +95,9 @@ export default {
         console.log(`Message: ${this.message}`);
         
         // Reset the form
-        this.name = '';
-        this.email = '';
-        this.message = '';
+       // this.name = '';
+       // this.email = '';
+       // this.message = '';
         
         // show the tooltip
         this.showTooltip = true;
