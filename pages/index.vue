@@ -170,6 +170,4 @@
   [v-show].active {
     opacity: 1;
   }
-  
-  
   </style>

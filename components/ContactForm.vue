@@ -4,7 +4,7 @@
     netlify-honeypot
     name="contact"
     method="POST" 
-    action="/success"
+    @submit="submitForm($event)"
     >
       
     <input type="hidden" name="form-name" value="contact" />
@@ -70,18 +70,23 @@
               Submit
             </button>
           </p>
-          
+          <p
+            class="bg-sky-500/40 text-white rounded-lg p-3 mt-3"
+            v-show="showTooltip"
+          >
+            Form submitted successfully!
+          </p>
         </form>
 </template>
 
 <script >
-
 export default {
   data() {
     return {
       name: '',
       email: '',
       message: '',
+      showTooltip: false, // initialize to false
     }
   },
   methods: {
@@ -90,12 +95,18 @@ export default {
         console.log(`Name: ${this.name}`);
         console.log(`Email: ${this.email}`);
         console.log(`Message: ${this.message}`);
-
+        
         // Reset the form
         this.name = '';
         this.email = '';
         this.message = '';
         
+        // show the tooltip
+        this.showTooltip = true;
+        // hide the tooltip after 3 seconds
+        setTimeout(() => {
+          this.showTooltip = false;
+        }, 5000);
     },
     
   },
