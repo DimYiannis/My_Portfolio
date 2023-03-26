@@ -1,11 +1,11 @@
 <template>
     <form class="min-w-max  mx-auto tablet:mx-20 "
-    action="/"
+    netlify
+    netlify-honeypot
     name="contact"
     method="POST" 
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-    @submit="submitForm($event)">
+    action="/success"
+    >
       
     <input type="hidden" name="form-name" value="contact" />
     <p hidden>
