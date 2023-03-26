@@ -9,9 +9,7 @@
       
     <input type="hidden" name="form-name" value="contact" />
     <p hidden>
-		  <label> 
-        <input name="bot-field" />
-      </label>
+		  <label>Don’t fill this out:<input name="bot-field" /></label>
 	  </p>
           <p class="mb-4">
             <label class="block font-bold mb-2" for="name" >
