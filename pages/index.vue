@@ -34,7 +34,7 @@
         <!--Info-->
         <div class="text-white mt-10 flex flex-col gap-5">
   
-          <h1 class="text-5xl tablet:text-6xl
+          <h1 class="text-5xl tablet:text-6xl text-center
           grid self-center tablet:self-start"
           >Hey i am Yiannis. <br> Nice to meet you! </h1>
           
