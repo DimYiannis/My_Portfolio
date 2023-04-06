@@ -24,7 +24,7 @@
 @tailwind utilities;
 
 :root {
-    --primary: rgb(0, 0, 0);
+    --primary: rgb(70, 70, 70);
     --secondary: rgb(11, 158, 202);
 } 
 
