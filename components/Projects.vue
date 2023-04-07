@@ -23,7 +23,7 @@
               class="w-[50px] h-[30px] border-2 border-sky-500 
               bg-transparent hover:bg-sky-500 text-sky-500
             hover:text-black rounded-md text-center">
-              Site
+              Demo
           </NuxtLink>
 
           <NuxtLink :to="i.giturl"
