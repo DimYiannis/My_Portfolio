@@ -7,8 +7,8 @@
         py-5 desktop:justify-around ">
         
           <div class="font-semibold text-white/40 
-          hover:text-sky-500 justify-center flex">
-            <h1>Yiannis Dimitrakopoulos</h1>
+          hover:text-sky-500 justify-center flex cursor-pointer">
+            <NuxtLink to="https://github.com/DimYiannis">Yiannis Dimitrakopoulos</NuxtLink>
           </div>
   
           <div class="flex gap-2 justify-center ">
@@ -35,22 +35,31 @@
         <div class="text-white mt-10 flex flex-col gap-5">
   
           <h1 class="text-5xl tablet:text-6xl text-center
-          grid self-center tablet:self-start"
+          grid self-center tablet:self-start tablet:text-start"
           >Hey i am Yiannis. <br> Nice to meet you! </h1>
           
-          <h2 class="text-sm mobile:text-lg tablet:text-lg
-          grid self-center tablet:self-start text-center tablet:text-start"
-          >I am a frontend web developer based in Thessaloniki, Greece.
-            <br> I am passionate about building interactive web pages and apps.
-            <br>I love to learn and contribute. 
+          <h2 class="text-sm mobile:text-lg tablet:text-lg tablet:w-[500px] w-[250px] 
+          mobile:w-[420px] self-center tablet:self-start 
+          text-center tablet:text-start"
+          >I am a frontend web developer based in <a class="text-sky-400 after:content" href="https://www.google.com/maps/place/Θεσσαλονίκη/@40.6187484,22.9249924,11.72z/data=!4m6!3m5!1s0x14a838f41428e0ed:0x9bae715b8d574a9!8m2!3d40.6400629!4d22.9444191!16zL20vMGIybWM" 
+          target="_blank">Thessaloniki</a>, Greece.
+            <br>I specialize in building high-quality, interactive web pages 
+            and applications.
+            <br>My passion for web development drives me to constantly learn and 
+            stay up-to-date with the latest trends and technologies.
           </h2>
-  
-          <a href="#contact" 
+
+          <a href="#contact" @mouseover="open = true"
+          @mouseleave="open=false"
             class="uppercase font-semibold underline 
             decoration-sky-500/40 hover:decoration-sky-500 
             underline-offset-4 decoration-2 grid self-center"
             >Contact me
           </a>
+          <contacttip v-if="open"/>
+          <Teleport to="body">
+            
+          </Teleport>
   
         </div>
   
@@ -59,9 +68,10 @@
           order-first tablet:order-last">
           <blob/>
         </div>
-  
+        
       </div>
-  
+        
+
       <!--Skills section-->
       <div class="mt-10 border-y-2 border-sky-500 group 
         hover:border-white grid desktop:border-0" >
@@ -117,6 +127,8 @@
           <h1 class="text-4xl font-semibold">Contact</h1>
           <h2 class="">Don't hesitate to contact me, i would love to help and contribute.
             <br> Please fill in the form and i will reach out to you as soon as possible.
+            <br> Thank you for considering me for your project, and 
+            I look forward to the possibility of working with you.
           </h2>
         </div>
   
@@ -126,7 +138,8 @@
         self-center ">
           <ContactForm/>
         </div>
-        
+
+               
       </div>
       
       <!--Footer-->
@@ -137,7 +150,7 @@
         
           <div class="font-semibold text-white/40 
           hover:text-sky-500 justify-center flex">
-            <h1>Yiannis Dimitrakopoulos</h1>
+            <NuxtLink to="https://www.linkedin.com/in/dim-yiannis/">Yiannis Dimitrakopoulos</NuxtLink>
           </div>
   
           <div class="flex gap-2 justify-center ">
@@ -160,7 +173,16 @@
     </div>
   </template>
   
-  
+<script>
+export default {
+  data () {
+    return {
+      open: false
+    }
+  }
+}
+</script>
+
   <style>
   /* Tooltip styles */
   [v-show] {

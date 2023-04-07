@@ -1,8 +1,8 @@
 <template>
   <svg version="1.1" 
-xmlns="http://www.w3.org/2000/svg" 
-viewBox="0 0 500 500" width="100%" 
-id="blobSvg" style="opacity: 1;">
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 500 500" width="100%" 
+    id="blobSvg" style="opacity: 1;">
     <image x="0" y="0" width="100%" 
     height="100%" clip-path="url(#shape)" 
     href="https://media.licdn.com/dms/image/D4E03AQFf7PVWaJISzg/profile-displayphoto-shrink_800_800/0/1675716509761?e=1684368000&v=beta&t=0DC4Tu_j_nWdI06loxcBzW-lj-GMh4NgAPHuxWBAddE" 

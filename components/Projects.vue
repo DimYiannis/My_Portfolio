@@ -13,14 +13,14 @@
             <img :src="i.img" 
             class="h-[200px] w-[200px]
             mobile:h-[200px] mobile:w-[350px]
-            tablet:w-[400px] tablet:h-[300px] "/>
+            tablet:w-[400px] tablet:h-[300px] rounded-lg "/>
           </div>
             
           <div class="flex place-content-center gap-2 my-2
           font-semibold">
 
             <NuxtLink :to="i.url" 
-              class="w-[50px] h-[30px] border-2 border-sky-500 
+              class="w-[60px] h-[30px] border-2 border-sky-500 
               bg-transparent hover:bg-sky-500 text-sky-500
             hover:text-black rounded-md text-center">
               Demo

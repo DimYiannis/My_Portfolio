@@ -22,7 +22,7 @@
               name="name"
               id="name"
               type="text"
-              placeholder="Enter your name"
+              placeholder="Name"
               v-model="name"
               >
             
@@ -39,7 +39,7 @@
               name="email"
               id="email"
               type="email"
-              placeholder="Enter your email"
+              placeholder="Email"
               v-model="email"
             >
           </p>
@@ -54,7 +54,7 @@
               leading-tight focus:outline-none focus:shadow-outline"
               name="message"
               id="message"
-              placeholder="Enter your message"
+              placeholder="Message"
               v-model="message"
             ></textarea>
 
