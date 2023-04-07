@@ -1,7 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import {resolve} from "path";
 export default defineNuxtConfig({
-
+  app: {
+    head: {
+        link: [{ rel: 'icon', type: 'image/ico', href: '/favicon.ico' }]
+    }
+},
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/google-fonts', 
