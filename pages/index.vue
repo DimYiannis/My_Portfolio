@@ -127,8 +127,8 @@
           <h1 class="text-4xl font-semibold">Contact</h1>
           <h2 class="">Don't hesitate to contact me, i would love to help and contribute.
             <br> Please fill in the form and i will reach out to you as soon as possible.
-            <br> Thank you for considering me for your project, and 
-            I look forward to the possibility of working with you.
+            <br> Thank you for considering me for your project, 
+            i look forward to the possibility of working with you.
           </h2>
         </div>
   
@@ -177,7 +177,7 @@
 export default {
   data () {
     return {
-      open: false
+      open: false,
     }
   }
 }
@@ -187,9 +187,11 @@ export default {
   /* Tooltip styles */
   [v-show] {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 1s ease;
   }
   [v-show].active {
     opacity: 1;
   }
+
+  
   </style>
