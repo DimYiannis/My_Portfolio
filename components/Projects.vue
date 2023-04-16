@@ -47,7 +47,7 @@
           <div class="grid place-content-center gap-2 my-2
           font-semibold text-white">
             <h1>{{i.title}}</h1> 
-            <h2>{{i.info}}</h2>
+            <h2 class="text-sm font-medium">{{i.info}}</h2>
             
 
           </div>
