@@ -79,7 +79,7 @@ export default {
           img: 'https://repository-images.githubusercontent.com/605200372/253f22e6-55ad-4449-a55d-3cd0ff5746a7',
           url:'https://meet-in-thessaloniki.netlify.app/',
           giturl: 'https://github.com/DimYiannis/Meet-in-Thessaloniki',
-          title: 'Tourism guide website.',
+          title: 'Tourist guide website.',
           info: 'Built with Nuxt 3 and Tailwind CSS',
         },
       ],
