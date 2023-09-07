@@ -68,7 +68,7 @@ export default {
       data: [
         {
           id: 'augusts-merch',
-          img: 'https://user-images.githubusercontent.com/107484245/230052812-d1e7f34e-7-45ff-93b8-ce98de91df43.png',
+          img: 'https://user-images.githubusercontent.com/107484245/230052812-d1e7f34e-7ec2-45ff-93b8-ce98de91df43.png',
           url: 'https://dimyiannis.github.io/augusts-merch/',
           giturl:'https://github.com/DimYiannis/augusts-merch',
           title: 'Online clothing store.',
