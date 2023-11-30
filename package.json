@@ -11,7 +11,7 @@
     "@nuxtjs/google-fonts": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.6.4",
     "autoprefixer": "^10.4.14",
-    "nuxt": "^3.3.1",
+    "nuxt": "^3.8.2",
     "postcss": "^8.4.21",
     "postcss-import": "^15.1.0",
     "tailwind-scrollbar": "^3.0.0",
