@@ -82,6 +82,14 @@ export default {
           title: 'Tourist guide website.',
           info: 'Built with Nuxt 3 and Tailwind CSS',
         },
+        {
+          id: 'Academia',
+          img: 'https://github.com/DimYiannis/academia_v2/assets/107484245/2afc226c-cf6f-46ed-9cf6-28d7f148cf2e',
+          url:'https://academiav2.netlify.app/',
+          giturl: 'https://github.com/DimYiannis/academia_v2',
+          title: 'A social platform for scientific posts.',
+          info: 'Built with Nuxt 3, Tailwind CSS and Node.js',
+        },
       ],
       
     }

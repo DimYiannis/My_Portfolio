@@ -41,7 +41,7 @@
           <h2 class="text-sm mobile:text-lg tablet:text-lg tablet:w-[500px] w-[250px] 
           mobile:w-[420px] self-center tablet:self-start 
           text-center tablet:text-start"
-          >I am a frontend web developer based in <a class="text-sky-400 after:content" href="https://www.google.com/maps/place/Θεσσαλονίκη/@40.6187484,22.9249924,11.72z/data=!4m6!3m5!1s0x14a838f41428e0ed:0x9bae715b8d574a9!8m2!3d40.6400629!4d22.9444191!16zL20vMGIybWM" 
+          >I am a web developer based in <a class="text-sky-400 after:content" href="https://www.google.com/maps/place/Θεσσαλονίκη/@40.6187484,22.9249924,11.72z/data=!4m6!3m5!1s0x14a838f41428e0ed:0x9bae715b8d574a9!8m2!3d40.6400629!4d22.9444191!16zL20vMGIybWM" 
           target="_blank">Thessaloniki</a>, Greece.
             <br>I have experience in developing web pages and applications with a focus on delivering quality and interactivity.
             <br>My passion for web development drives me to constantly learn and 
