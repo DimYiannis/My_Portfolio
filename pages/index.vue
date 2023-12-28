@@ -83,28 +83,34 @@
         text-white/40 text-4xl my-5
         gap-5 max-w-[1000px] justify-self-center">
   
-          <div class="hover:text-white" >
+          <div class="hover:text-white flex gap-2" >
             <p>HTML</p>
+            <LogosHtml/>
           </div>
   
-          <div class="hover:text-white">
+          <div class="hover:text-white flex gap-2">
             <p>JavaScript</p>
+            <LogosJavascript/>
           </div>
   
-          <div class="hover:text-white">
+          <div class="hover:text-white flex gap-2">
             <p>Vue js</p>
+            <LogosVuejs/>
           </div>
   
-          <div class="hover:text-white">
+          <div class="hover:text-white flex gap-2">
             <p>Nuxt 3</p>
+            <LogosNuxtjs/>
           </div>
   
-          <div class="hover:text-white">
+          <div class="hover:text-white flex gap-2">
             <p>Tailwind</p>
+            <LogosTailwind/>
           </div>
   
-          <div class="hover:text-white">
-            <p>Figma</p>
+          <div class="hover:text-white flex gap-2">
+            <p>Node js</p>
+            <LogosNodejs/>
           </div>
   
         </div>
