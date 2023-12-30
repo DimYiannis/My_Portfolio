@@ -66,13 +66,13 @@ export default {
     return {
       showTip:false,
       data: [
-        {
-          id: 'augusts-merch',
-          img: 'https://user-images.githubusercontent.com/107484245/230052812-d1e7f34e-7ec2-45ff-93b8-ce98de91df43.png',
-          url: 'https://dimyiannis.github.io/augusts-merch/',
-          giturl:'https://github.com/DimYiannis/augusts-merch',
-          title: 'Online clothing store.',
-          info: 'Built with Vue Js and Tailwind CSS',
+      {
+          id: 'Academia',
+          img: 'https://github.com/DimYiannis/academia_v2/assets/107484245/2afc226c-cf6f-46ed-9cf6-28d7f148cf2e',
+          url:'https://academiav2.netlify.app/',
+          giturl: 'https://github.com/DimYiannis/academia_v2',
+          title: 'A social platform for scientific posts.',
+          info: 'Built with Nuxt 3, Tailwind CSS and Node.js',
         },
         {
           id: 'Meet-in-Thessaloniki',
@@ -83,12 +83,12 @@ export default {
           info: 'Built with Nuxt 3 and Tailwind CSS',
         },
         {
-          id: 'Academia',
-          img: 'https://github.com/DimYiannis/academia_v2/assets/107484245/2afc226c-cf6f-46ed-9cf6-28d7f148cf2e',
-          url:'https://academiav2.netlify.app/',
-          giturl: 'https://github.com/DimYiannis/academia_v2',
-          title: 'A social platform for scientific posts.',
-          info: 'Built with Nuxt 3, Tailwind CSS and Node.js',
+          id: 'augusts-merch',
+          img: 'https://user-images.githubusercontent.com/107484245/230052812-d1e7f34e-7ec2-45ff-93b8-ce98de91df43.png',
+          url: 'https://dimyiannis.github.io/augusts-merch/',
+          giturl:'https://github.com/DimYiannis/augusts-merch',
+          title: 'Online clothing store.',
+          info: 'Built with Vue Js and Tailwind CSS',
         },
       ],
       
