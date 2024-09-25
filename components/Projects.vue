@@ -67,6 +67,14 @@ export default {
       showTip:false,
       data: [
       {
+          id: 'AugustsV2',
+          img: 'https://user-images.githubusercontent.com/107484245/230052812-d1e7f34e-7ec2-45ff-93b8-ce98de91df43.png',
+          url:'https://augustsv2.netlify.app/',
+          giturl: 'https://github.com/DimYiannis/Augusts',
+          title: 'A full-stack mock-up e-commerce website',
+          info: "Built with Nuxt.js, Pinia, Tailwind CSS andNode.js",
+        },
+      {
           id: 'Academia',
           img: 'https://github.com/DimYiannis/academia_v2/assets/107484245/2afc226c-cf6f-46ed-9cf6-28d7f148cf2e',
           url:'https://academiav2.netlify.app/',
