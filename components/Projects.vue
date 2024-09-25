@@ -71,7 +71,7 @@ export default {
           img: 'https://user-images.githubusercontent.com/107484245/230052812-d1e7f34e-7ec2-45ff-93b8-ce98de91df43.png',
           url:'https://augustsv2.netlify.app/',
           giturl: 'https://github.com/DimYiannis/Augusts',
-          title: 'A full-stack mock-up e-commerce website',
+          title: 'Second version of Augusts Merch.',
           info: "Built with Nuxt.js, Pinia, Tailwind CSS andNode.js",
         },
       {
