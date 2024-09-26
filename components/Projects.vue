@@ -71,7 +71,7 @@ export default {
           img: 'https://github.com/user-attachments/assets/f4ccc3d2-bb85-406d-a0c1-a17d45d8001c',
           url:'https://augustsv2.netlify.app/',
           giturl: 'https://github.com/DimYiannis/Augusts',
-          title: 'Second version of Augusts Merch.',
+          title: 'Augusts οnline clothing store.',
           info: "Built with Nuxt.js, Pinia, Tailwind CSS and Node.js",
         },
       {
@@ -89,14 +89,6 @@ export default {
           giturl: 'https://github.com/DimYiannis/Meet-in-Thessaloniki',
           title: 'Tourist guide website.',
           info: 'Built with Nuxt 3 and Tailwind CSS',
-        },
-        {
-          id: 'augusts-merch',
-          img: 'https://user-images.githubusercontent.com/107484245/230052812-d1e7f34e-7ec2-45ff-93b8-ce98de91df43.png',
-          url: 'https://dimyiannis.github.io/augusts-merch/',
-          giturl:'https://github.com/DimYiannis/augusts-merch',
-          title: 'Online clothing store.',
-          info: 'Built with Vue Js and Tailwind CSS',
         },
       ],
       
