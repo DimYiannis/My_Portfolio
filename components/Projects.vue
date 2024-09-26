@@ -68,7 +68,7 @@ export default {
       data: [
       {
           id: 'AugustsV2',
-          img: 'https://user-images.githubusercontent.com/107484245/230052812-d1e7f34e-7ec2-45ff-93b8-ce98de91df43.png',
+          img: 'https://github.com/user-attachments/assets/f4ccc3d2-bb85-406d-a0c1-a17d45d8001c',
           url:'https://augustsv2.netlify.app/',
           giturl: 'https://github.com/DimYiannis/Augusts',
           title: 'Second version of Augusts Merch.',
