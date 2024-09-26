@@ -72,7 +72,7 @@ export default {
           url:'https://augustsv2.netlify.app/',
           giturl: 'https://github.com/DimYiannis/Augusts',
           title: 'Second version of Augusts Merch.',
-          info: "Built with Nuxt.js, Pinia, Tailwind CSS andNode.js",
+          info: "Built with Nuxt.js, Pinia, Tailwind CSS and Node.js",
         },
       {
           id: 'Academia',
