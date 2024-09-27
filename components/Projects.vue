@@ -66,6 +66,14 @@ export default {
     return {
       showTip:false,
       data: [
+        {
+          id: 'Arts Gallery',
+          img: 'https://github.com/user-attachments/assets/64ddb982-d670-4452-bf51-84cb4e106697',
+          url:'https://artsygallery.netlify.app',
+          giturl: 'https://github.com/DimYiannis/Arts',
+          title: "A diverse collection of artworks using the Art Institute of Chicago's API.",
+          info: "Built with HTMX, Javascript, Tailwind CSS and HTML5",
+        },
       {
           id: 'AugustsV2',
           img: 'https://github.com/user-attachments/assets/f4ccc3d2-bb85-406d-a0c1-a17d45d8001c',
