@@ -71,7 +71,7 @@ export default {
           img: 'https://github.com/user-attachments/assets/64ddb982-d670-4452-bf51-84cb4e106697',
           url:'https://artsygallery.netlify.app',
           giturl: 'https://github.com/DimYiannis/Arts',
-          title: "A diverse collection of artworks using the Art Institute of Chicago's API.",
+          title: "A diverse collection of artworks.",
           info: "Built with HTMX, Javascript, Tailwind CSS and HTML5",
         },
       {
