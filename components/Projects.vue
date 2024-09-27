@@ -68,7 +68,7 @@ export default {
       data: [
         {
           id: 'Arts Gallery',
-          img: 'https://github.com/user-attachments/assets/64ddb982-d670-4452-bf51-84cb4e106697',
+          img: 'https://github.com/user-attachments/assets/1a553256-cba0-424f-b2b7-afd32ccd3598',
           url:'https://artsygallery.netlify.app',
           giturl: 'https://github.com/DimYiannis/Arts',
           title: "A diverse collection of artworks.",
