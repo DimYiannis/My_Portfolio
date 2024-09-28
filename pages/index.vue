@@ -3,10 +3,10 @@
     <!--Header-->
     <header class="w-screen tablet:px-4 laptop:px-32">
       <nav
-        class="bg-transparent w-full flex flex-col mobile:flex-row mobile:justify-around tablet:justify-between justify-self-center py-5 desktop:justify-around"
+        class="bg-transparent w-full flex flex-col mobile:flex-row mobile:justify-around tablet:justify-between justify-self-center pt-5 desktop:justify-around"
       >
         <div
-          class="font-semibold text-white/40 hover:text-sky-500 justify-center flex cursor-pointer"
+          class="font-semibold text-white/40 hover:text-sky-500 text-xl justify-center flex cursor-pointer"
         >
           <NuxtLink to="https://github.com/DimYiannis"
             >Yiannis Dimitrakopoulos</NuxtLink
