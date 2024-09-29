@@ -1,123 +1,245 @@
 <template>
-  <div class="bg-gradient-to-r from-[#1a1919f6] to-[#3a3737f6] h-full w-screen">
-    <!--Header-->
-    <header class="w-screen tablet:px-4 laptop:px-32">
-      <nav
-        class="bg-transparent w-full flex flex-col mobile:flex-row mobile:justify-around tablet:justify-between justify-self-center pt-5 desktop:justify-around"
-      >
-        <div
-          class="font-semibold text-white/40 hover:text-sky-500 text-xl justify-center flex cursor-pointer"
-        >
-          <NuxtLink to="https://github.com/DimYiannis"
-            >Yiannis Dimitrakopoulos</NuxtLink
-          >
-        </div>
-
-        <div class="flex gap-2 justify-center">
-          <NuxtLink
-            to="https://github.com/DimYiannis"
-            class="text-white/40 hover:text-sky-500"
-          >
-            <LogosGithub />
-          </NuxtLink>
-
-          <NuxtLink
-            to="https://www.linkedin.com/in/dim-yiannis/"
-            class="text-white/40 hover:text-sky-500"
-          >
-            <LogosLinkein />
-          </NuxtLink>
-        </div>
+  <div class="min-h-screen bg-dark-gray text-white">
+    <header class="p-4">
+      <nav class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Yiannis Dimitrakopoulos</h1>
+        <ul class="flex space-x-4">
+          <li>
+            <NuxtLink
+              to="https://github.com/DimYiannis"
+              class="text-white/40 hover:text-sky-500"
+            >
+              <LogosGithub />
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="https://www.linkedin.com/in/dim-yiannis/"
+              class="text-white/40 hover:text-sky-500"
+            >
+              <LogosLinkein />
+            </NuxtLink>
+          </li>
+        </ul>
       </nav>
     </header>
 
-    <!--Hero section-->
-    <HeroSection />
-
-    <!--Skills section-->
-    <webstack />
-
-    <!--Projects-->
-    <Projects />
-
-    <!--Contact-->
-    <div
-      class="my-10 tablet:px-4 laptop:px-64 flex flex-col tablet:flex-row lgdesk:px-[550px] place-content-center desktop:justify-center"
-    >
-      <!--Contact details-->
-      <div
-        class="flex flex-col self-center tablet:self-start text-white text-center gap-10 my-10 w-1/2"
-      >
-        <h1 class="text-4xl font-semibold">Contact</h1>
-        <h2 class="">
-          Don't hesitate to contact me, i would love to help and contribute.
-          <br />
-          Please fill in the form and i will reach out to you as soon as
-          possible. <br />
-          Thank you for considering me for your project, i look forward to the
-          possibility of working with you.
-        </h2>
-      </div>
-
-      <!--Contact form-->
-      <div
-        id="contact"
-        class="m-5 text-white w-full tablet:w-1/2 flex self-center"
-      >
-        <ContactForm />
-      </div>
-    </div>
-
-    <!--Footer-->
-    <div>
-      <div
-        class="bg-transparent w-full flex flex-col mobile:flex-row mobile:justify-around justify-self-center py-5 desktop:justify-around"
-      >
-        <div
-          class="font-semibold text-white/40 hover:text-sky-500 justify-center flex"
-        >
-          <NuxtLink to="https://www.linkedin.com/in/dim-yiannis/"
-            >Yiannis Dimitrakopoulos</NuxtLink
-          >
+    <main class="container mx-auto px-4 py-8">
+      <section class="mb-16 flex flex-col md:flex-row items-center">
+        <div class="md:w-2/3 pr-8">
+          <h2 class="text-4xl font-bold mb-4">
+            Full-Stack Developer with a focus on building practical solutions
+            and learning new skills along the way.
+          </h2>
+          <p class="mb-4">Currently based in Thessaloniki, Greece.</p>
+          <div class="flex space-x-4 mb-4">
+            <button class="bg-white text-black px-4 py-2 rounded">
+              Latest work on 
+            </button>
+            <button class="border border-white px-4 py-2 rounded">
+              CV/PDF
+            </button>
+          </div>
+          <div class="flex space-x-2">
+            <span class="w-4 h-4 bg-blue-500 rounded-full"></span>
+            <span class="w-4 h-4 bg-red-500 rounded-full"></span>
+            <span class="w-4 h-4 bg-yellow-500 rounded-full"></span>
+            <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+            <span class="w-4 h-4 bg-purple-500 rounded-full"></span>
+            <span class="w-4 h-4 bg-pink-500 rounded-full"></span>
+          </div>
         </div>
+        <div class="md:w-1/3 mt-8 md:mt-0">
+          <img
+            src="/profile.jpeg"
+            alt="Your Name"
+            class="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+      </section>
 
-        <div class="flex gap-2 justify-center">
+      <section class="mb-16">
+        <p class="mb-4">
+          I have experience in developing web pages and applications with a
+          focus on delivering quality and interactivity.
+        </p>
+        <p class="mb-4">
+          As both the designer and developer, I combine form and function to
+          deliver effective and well-rounded solutions.
+        </p>
+      </section>
+
+      <section class="mb-16">
+        <h3 class="text-2xl font-bold mb-4">PROJECTS</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
+          <div
+            v-for="project in projects"
+            :key="project.id"
+            class="bg-light-gray p-4 rounded"
+          >
+            <img
+              :src="project.img"
+              :alt="project.title"
+              class="w-full h-48 object-cover mb-4 rounded"
+            />
+            <h4 class="text-xl font-semibold mb-2">{{ project.title }}</h4>
+            <p class="text-sm mb-4">{{ project.info }}</p>
+            <div class="flex space-x-4">
+              <a
+                :href="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-white text-black px-3 py-1 rounded text-sm"
+                >View Live</a
+              >
+              <a
+                :href="project.giturl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="border border-white px-3 py-1 rounded text-sm"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+        <NuxtLink
+          to="https://github.com/DimYiannis?tab=repositories"
+          class="mt-4 border border-white px-4 py-2 rounded"
+        >
+          View more on Github
+        </NuxtLink>
+      </section>
+
+      <section class="mb-16">
+        <h3 class="text-2xl font-bold mb-4">
+          EXPERTISE IN WEB DEVELOPMENT TECHNOLOGIES
+        </h3>
+        <p class="mb-4">
+          Below is a summary of the skills I have acquired in the realm of web development. 
+          Please feel free to reach out if you’d like to learn more about my past projects or discuss any potential collaborations.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div v-for="stack in webstack" :key="stack.company" class="mb-4">
+            <h4 class="font-bold">{{ stack.name }}</h4>
+            <component :is="stack.logo" class="mb-2" />
+            <p class="text-sm text-gray-400">{{ stack.expertise }}</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="text-4xl font-bold mb-4">GET IN TOUCH</h3>
+        <p class="mb-4">
+          Let's talk about your project and how I can help you. If it has
+          anything to do with product design - shoot me a message at
+        </p>
+        <button class="bg-white text-black px-4 py-2 rounded">Email me</button>
+      </section>
+    </main>
+
+    <footer class="mt-16 p-4 flex justify-between items-center">
+      <p>© 2024 Yiannis Dimitrakopoulos</p>
+      <ul class="flex space-x-4">
+        <li>
           <NuxtLink
             to="https://github.com/DimYiannis"
             class="text-white/40 hover:text-sky-500"
           >
             <LogosGithub />
           </NuxtLink>
-
+        </li>
+        <li>
           <NuxtLink
             to="https://www.linkedin.com/in/dim-yiannis/"
             class="text-white/40 hover:text-sky-500"
           >
             <LogosLinkein />
           </NuxtLink>
-        </div>
-      </div>
-    </div>
+        </li>
+      </ul>
+    </footer>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      open: false,
-    };
+<script setup lang="ts">
+import { shallowRef } from 'vue'
+import NodejsLogo from '~/components/Logos/Nodejs.vue'
+import JavascriptLogo from '~/components/Logos/Javascript.vue'
+import NuxtjsLogo from '~/components/Logos/Nuxtjs.vue'
+import TailwindLogo from '~/components/Logos/Tailwind.vue'
+import VuejsLogo from '~/components/Logos/Vuejs.vue'
+import Html5Logo from '~/components/Logos/Html.vue'
+
+
+const projects = [
+  {
+    id: "Arts Gallery",
+    img: "https://github.com/user-attachments/assets/1a553256-cba0-424f-b2b7-afd32ccd3598",
+    url: "https://artsygallery.netlify.app",
+    giturl: "https://github.com/DimYiannis/Arts",
+    title: "A diverse collection of artworks.",
+    info: "Built with HTMX, Javascript, Tailwind CSS and HTML5",
   },
+  {
+    id: "AugustsV2",
+    img: "https://github.com/user-attachments/assets/f4ccc3d2-bb85-406d-a0c1-a17d45d8001c",
+    url: "https://augustsv2.netlify.app/",
+    giturl: "https://github.com/DimYiannis/Augusts",
+    title: "Augusts οnline clothing store.",
+    info: "Built with Nuxt.js, Pinia, Tailwind CSS and Node.js",
+  },
+  {
+    id: "Academia",
+    img: "https://github.com/DimYiannis/academia_v2/assets/107484245/2afc226c-cf6f-46ed-9cf6-28d7f148cf2e",
+    url: "https://academiav2.netlify.app/",
+    giturl: "https://github.com/DimYiannis/academia_v2",
+    title: "A social platform for scientific posts.",
+    info: "Built with Nuxt 3, Tailwind CSS and Node.js",
+  },
+  {
+    id: "Meet-in-Thessaloniki",
+    img: "https://repository-images.githubusercontent.com/605200372/253f22e6-55ad-4449-a55d-3cd0ff5746a7",
+    url: "https://meet-in-thessaloniki.netlify.app/",
+    giturl: "https://github.com/DimYiannis/Meet-in-Thessaloniki",
+    title: "Tourist guide website.",
+    info: "Built with Nuxt 3 and Tailwind CSS",
+  },
+];
+
+const webstack = shallowRef([
+  {
+    name: 'Node.js',
+    logo: NodejsLogo,
+    expertise: 'Backend Development',
+  },
+  {
+    name: 'JavaScript',
+    logo: JavascriptLogo,
+    expertise: 'Frontend & Backend Scripting',
+  },
+  {
+    name: 'Nuxt.js',
+    logo: NuxtjsLogo,
+    expertise: 'Server-Side Rendering & Static Site Generation',
+  },
+  {
+    name: 'Tailwind CSS',
+    logo: TailwindLogo,
+    expertise: 'Utility-First CSS Framework',
+  },
+  {
+    name: 'Vue.js',
+    logo: VuejsLogo,
+    expertise: 'Progressive JavaScript Framework',
+  },
+  {
+    name: 'HTML5',
+    logo: Html5Logo,
+    expertise: 'Markup Language',
+  },
+])
+
+const redirectToLinkedIn = () => {
+  window.open("https://linkedin.com/in/dim-yiannis", "_blank");
 };
 </script>
-
-<style>
-/* Tooltip styles */
-[v-show] {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-[v-show].active {
-  opacity: 1;
-}
-</style>

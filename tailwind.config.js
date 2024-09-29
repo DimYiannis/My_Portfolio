@@ -9,30 +9,16 @@ module.exports = {
     "./app.vue",
   ],
   theme: {
-
-    fontFamily: {
-      
-    },
-     // customized breakpoints //
-     screens: {
-      'mobile': '450px',
-        
-      'tablet': '760px',
-      // => @media (min-width: 760px) { ... }
-
-      'laptop': '1024px',
-      // => @media (min-width: 1024px) { ... }
-
-      'desktop': '1280px',
-      // => @media (min-width: 1280px) { ... }
-
-      'lgdesk' : '1600px',
-    },
+    fontFamily: {},
     extend: {
-     
+      colors: {
+        "dark-gray": "#121212",
+        "light-gray": "#1E1E1E",
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar')({ nocompatible: true }),
-  ],
-}
+  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
+};
