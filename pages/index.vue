@@ -34,11 +34,16 @@
           <p class="mb-4">Currently based in Thessaloniki, Greece.</p>
           <div class="flex space-x-4 mb-4">
             <button class="bg-white text-black px-4 py-2 rounded">
-              Latest work on 
+              Latest work on
             </button>
-            <button class="border border-white px-4 py-2 rounded">
-              CV/PDF
-            </button>
+            <a
+              href="/DimYiannis_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors duration-300 inline-block"
+            >
+              View CV
+            </a>
           </div>
           <div class="flex space-x-2">
             <span class="w-4 h-4 bg-blue-500 rounded-full"></span>
@@ -115,8 +120,9 @@
           EXPERTISE IN WEB DEVELOPMENT TECHNOLOGIES
         </h3>
         <p class="mb-4">
-          Below is a summary of the skills I have acquired in the realm of web development. 
-          Please feel free to reach out if you’d like to learn more about my past projects or discuss any potential collaborations.
+          Below is a summary of the skills I have acquired in the realm of web
+          development. Please feel free to reach out if you’d like to learn more
+          about my past projects or discuss any potential collaborations.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div v-for="stack in webstack" :key="stack.company" class="mb-4">
@@ -162,14 +168,13 @@
 </template>
 
 <script setup lang="ts">
-import { shallowRef } from 'vue'
-import NodejsLogo from '~/components/Logos/Nodejs.vue'
-import JavascriptLogo from '~/components/Logos/Javascript.vue'
-import NuxtjsLogo from '~/components/Logos/Nuxtjs.vue'
-import TailwindLogo from '~/components/Logos/Tailwind.vue'
-import VuejsLogo from '~/components/Logos/Vuejs.vue'
-import Html5Logo from '~/components/Logos/Html.vue'
-
+import { shallowRef } from "vue";
+import NodejsLogo from "~/components/Logos/Nodejs.vue";
+import JavascriptLogo from "~/components/Logos/Javascript.vue";
+import NuxtjsLogo from "~/components/Logos/Nuxtjs.vue";
+import TailwindLogo from "~/components/Logos/Tailwind.vue";
+import VuejsLogo from "~/components/Logos/Vuejs.vue";
+import Html5Logo from "~/components/Logos/Html.vue";
 
 const projects = [
   {
@@ -208,38 +213,53 @@ const projects = [
 
 const webstack = shallowRef([
   {
-    name: 'Node.js',
+    name: "Node.js",
     logo: NodejsLogo,
-    expertise: 'Backend Development',
+    expertise: "Backend Development",
   },
   {
-    name: 'JavaScript',
+    name: "JavaScript",
     logo: JavascriptLogo,
-    expertise: 'Frontend & Backend Scripting',
+    expertise: "Frontend & Backend Scripting",
   },
   {
-    name: 'Nuxt.js',
+    name: "Nuxt.js",
     logo: NuxtjsLogo,
-    expertise: 'Server-Side Rendering & Static Site Generation',
+    expertise: "Server-Side Rendering & Static Site Generation",
   },
   {
-    name: 'Tailwind CSS',
+    name: "Tailwind CSS",
     logo: TailwindLogo,
-    expertise: 'Utility-First CSS Framework',
+    expertise: "Utility-First CSS Framework",
   },
   {
-    name: 'Vue.js',
+    name: "Vue.js",
     logo: VuejsLogo,
-    expertise: 'Progressive JavaScript Framework',
+    expertise: "Progressive JavaScript Framework",
   },
   {
-    name: 'HTML5',
+    name: "HTML5",
     logo: Html5Logo,
-    expertise: 'Markup Language',
+    expertise: "Markup Language",
   },
-])
+]);
 
 const redirectToLinkedIn = () => {
   window.open("https://linkedin.com/in/dim-yiannis", "_blank");
+};
+
+const downloadCV = () => {
+  // Create a link element
+  const link = document.createElement("a");
+  // Set the href to the path of your CV file
+  link.href = "/DimYiannis_CV.pdf";
+  // Set the download attribute
+  link.download = "DimYiannis_CV.pdf";
+  // Append to the body
+  document.body.appendChild(link);
+  // Trigger the download
+  link.click();
+  // Clean up
+  document.body.removeChild(link);
 };
 </script>
