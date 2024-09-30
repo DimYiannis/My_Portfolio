@@ -1,5 +1,6 @@
 <template>
   <div class="text-sm">
+    <xml version="1.0" encoding="UTF-8"/>
     <svg
       width="45px"
       height="50px"

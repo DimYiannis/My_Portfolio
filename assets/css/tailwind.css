@@ -31,7 +31,14 @@
 
 @layer base {
     html,body {
-        background-color: darkgray;
-        color: white;
-    }    
+        font-family: 'Montserrat',Arial, sans-serif;
+        font-weight: 700;
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+        scroll-behavior: smooth
+    }
+    
+      
+      
   }

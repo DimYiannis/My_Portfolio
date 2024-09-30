@@ -1,4 +1,5 @@
 <template>
+<<<<<<< Updated upstream
   <div class="min-h-screen bg-dark-gray text-white">
     <header class="p-4">
       <nav class="flex justify-between items-center">
@@ -130,43 +131,111 @@
             <component :is="stack.logo" class="mb-2" />
             <p class="text-sm text-gray-400">{{ stack.expertise }}</p>
           </div>
+=======
+  <div class="bg-gradient-to-r from-[#1a1919f6] to-[#3a3737f6] h-full w-screen">
+    <!--Header-->
+    <header class="w-screen tablet:px-4 laptop:px-32">
+      <nav
+        class="bg-transparent w-full flex flex-col mobile:flex-row mobile:justify-around tablet:justify-between justify-self-center pt-5 desktop:justify-around"
+      >
+        <div
+          class="font-semibold text-white/40 hover:text-sky-500 text-xl justify-center flex cursor-pointer"
+        >
+          <NuxtLink to="https://github.com/DimYiannis"
+            >Yiannis Dimitrakopoulos</NuxtLink
+          >
+>>>>>>> Stashed changes
         </div>
-      </section>
 
-      <section>
-        <h3 class="text-4xl font-bold mb-4">GET IN TOUCH</h3>
-        <p class="mb-4">
-          Let's talk about your project and how I can help you. If it has
-          anything to do with product design - shoot me a message at
-        </p>
-        <button class="bg-white text-black px-4 py-2 rounded">Email me</button>
-      </section>
-    </main>
-
-    <footer class="mt-16 p-4 flex justify-between items-center">
-      <p>© 2024 Yiannis Dimitrakopoulos</p>
-      <ul class="flex space-x-4">
-        <li>
+        <div class="flex gap-2 justify-center">
           <NuxtLink
             to="https://github.com/DimYiannis"
             class="text-white/40 hover:text-sky-500"
           >
             <LogosGithub />
           </NuxtLink>
-        </li>
-        <li>
+
           <NuxtLink
             to="https://www.linkedin.com/in/dim-yiannis/"
             class="text-white/40 hover:text-sky-500"
           >
             <LogosLinkein />
           </NuxtLink>
-        </li>
-      </ul>
-    </footer>
+        </div>
+      </nav>
+    </header>
+
+    <!--Hero section-->
+    <HeroSection />
+
+    <!--Skills section-->
+    <webstack />
+
+    <!--Projects-->
+    <Projects />
+
+    <!--Contact-->
+    <div
+      class="my-10 tablet:px-4 laptop:px-64 flex flex-col tablet:flex-row lgdesk:px-[550px] place-content-center desktop:justify-center"
+    >
+      <!--Contact details-->
+      <div
+        class="flex flex-col self-center tablet:self-start text-white text-center gap-10 my-10 w-1/2"
+      >
+        <h1 class="text-4xl font-semibold">Contact</h1>
+        <h2 class="">
+          Don't hesitate to contact me, i would love to help and contribute.
+          <br />
+          Please fill in the form and i will reach out to you as soon as
+          possible. <br />
+          Thank you for considering me for your project, i look forward to the
+          possibility of working with you.
+        </h2>
+      </div>
+
+      <!--Contact form-->
+      <div
+        id="contact"
+        class="m-5 text-white w-full tablet:w-1/2 flex self-center"
+      >
+        <ContactForm />
+      </div>
+    </div>
+
+    <!--Footer-->
+    <div>
+      <div
+        class="bg-transparent w-full flex flex-col mobile:flex-row mobile:justify-around justify-self-center py-5 desktop:justify-around"
+      >
+        <div
+          class="font-semibold text-white/40 hover:text-sky-500 justify-center flex"
+        >
+          <NuxtLink to="https://www.linkedin.com/in/dim-yiannis/"
+            >Yiannis Dimitrakopoulos</NuxtLink
+          >
+        </div>
+
+        <div class="flex gap-2 justify-center">
+          <NuxtLink
+            to="https://github.com/DimYiannis"
+            class="text-white/40 hover:text-sky-500"
+          >
+            <LogosGithub />
+          </NuxtLink>
+
+          <NuxtLink
+            to="https://www.linkedin.com/in/dim-yiannis/"
+            class="text-white/40 hover:text-sky-500"
+          >
+            <LogosLinkein />
+          </NuxtLink>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
+<<<<<<< Updated upstream
 <script setup lang="ts">
 import { shallowRef } from "vue";
 import NodejsLogo from "~/components/Logos/Nodejs.vue";
@@ -246,6 +315,15 @@ const webstack = shallowRef([
 
 const redirectToLinkedIn = () => {
   window.open("https://linkedin.com/in/dim-yiannis", "_blank");
+=======
+<script>
+export default {
+  data() {
+    return {
+      open: false,
+    };
+  },
+>>>>>>> Stashed changes
 };
 
 const downloadCV = () => {
@@ -263,3 +341,14 @@ const downloadCV = () => {
   document.body.removeChild(link);
 };
 </script>
+
+<style>
+/* Tooltip styles */
+[v-show] {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+[v-show].active {
+  opacity: 1;
+}
+</style>
