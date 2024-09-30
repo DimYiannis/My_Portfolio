@@ -36,9 +36,14 @@
             <button class="bg-white text-black px-4 py-2 rounded">
               Latest work on 
             </button>
-            <button class="border border-white px-4 py-2 rounded">
-              CV/PDF
-            </button>
+            <a 
+              href="/DimYiannis_CV.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors duration-300 inline-block"
+            >
+              View CV
+            </a>
           </div>
           <div class="flex space-x-2">
             <span class="w-4 h-4 bg-blue-500 rounded-full"></span>
@@ -133,7 +138,12 @@
           Let's talk about your project and how I can help you. If it has
           anything to do with product design - shoot me a message at
         </p>
-        <button class="bg-white text-black px-4 py-2 rounded">Email me</button>
+        <button 
+          @click="emailMe" 
+          class="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition-colors duration-300"
+        >
+          Email me
+        </button>
       </section>
     </main>
 
@@ -241,5 +251,29 @@ const webstack = shallowRef([
 
 const redirectToLinkedIn = () => {
   window.open("https://linkedin.com/in/dim-yiannis", "_blank");
+};
+
+const downloadCV = () => {
+  // Create a link element
+  const link = document.createElement('a');
+  // Set the href to the path of your CV file
+  link.href = '/DimYiannis_CV.pdf';
+  // Set the download attribute
+  link.download = 'DimYiannis_CV.pdf';
+  // Append to the body
+  document.body.appendChild(link);
+  // Trigger the download
+  link.click();
+  // Clean up
+  document.body.removeChild(link);
+}
+
+const emailMe = () => {
+  const email = 'yiannisdimitrakopoulos@yahoo.com'; 
+  const subject = 'Project Inquiry'; 
+  const body = 'Hello Yiannis,\n\nI would like to discuss a project with you.';
+
+  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailtoLink;
 };
 </script>
