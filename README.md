@@ -3,7 +3,7 @@
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 
-![image](https://user-images.githubusercontent.com/107484245/227019011-b0b270f3-0365-4d14-9f8d-4f4ba008e1c6.png)
+<img width="1456" alt="Screenshot 2024-09-30 at 3 17 30 PM" src="https://github.com/user-attachments/assets/63b3aaea-9f58-4946-8a1d-cba916914410">
 
 
 
