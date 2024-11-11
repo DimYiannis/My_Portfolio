@@ -35,26 +35,3 @@
         color: white;
     }    
   }
-
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  .text-animation {
-    overflow: hidden; /* Ensures the text is clipped */
-    white-space: nowrap; /* Prevents the text from wrapping */
-    border-right: 0.15em solid; /* Creates a cursor effect */
-    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
-  }
-  
-  @keyframes blink-caret {
-    50% {
-      border-color: transparent;
-    }
-  }
-  
