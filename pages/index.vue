@@ -28,8 +28,12 @@
       <section class="mb-16 flex flex-col md:flex-row items-center">
         <div class="md:w-2/3 pr-8">
           <h2 class="text-4xl font-bold mb-4 text-animation">
-            “Talk is cheap. Show me the code.” — Linus Torvalds
+            Software Developer
           </h2>
+          <h3 class="text-xl font-bold mb-4 text-animation">
+            “Talk is cheap. Show me the code.” <br>
+            — Linus Torvalds
+          </h3>
           <p class="mb-4">Currently based in Thessaloniki, Greece.</p>
           <div class="flex space-x-4 mb-4">
             <NuxtLink
