@@ -27,7 +27,7 @@
     <main class="container mx-auto px-4 py-8">
       <section class="mb-16 flex flex-col md:flex-row items-center">
         <div class="md:w-2/3 pr-8">
-          <h2 class="text-4xl font-bold mb-4">
+          <h2 class="text-4xl font-bold mb-4 text-animation">
             “Talk is cheap. Show me the code.” — Linus Torvalds
           </h2>
           <p class="mb-4">Currently based in Thessaloniki, Greece.</p>
@@ -263,4 +263,5 @@ const emailMe = () => {
   )}&body=${encodeURIComponent(body)}`;
   window.location.href = mailtoLink;
 };
+
 </script>
