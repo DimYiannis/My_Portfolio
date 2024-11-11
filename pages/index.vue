@@ -28,8 +28,7 @@
       <section class="mb-16 flex flex-col md:flex-row items-center">
         <div class="md:w-2/3 pr-8">
           <h2 class="text-4xl font-bold mb-4">
-            Full-Stack Developer with a focus on building practical solutions
-            and learning new skills along the way.
+            “Talk is cheap. Show me the code.” — Linus Torvalds
           </h2>
           <p class="mb-4">Currently based in Thessaloniki, Greece.</p>
           <div class="flex space-x-4 mb-4">
@@ -64,17 +63,6 @@
             class="w-full h-auto rounded-lg shadow-lg"
           />
         </div>
-      </section>
-
-      <section class="mb-16">
-        <p class="mb-4">
-          I have experience in developing web pages and applications with a
-          focus on delivering quality and interactivity.
-        </p>
-        <p class="mb-4">
-          As both the designer and developer, I combine form and function to
-          deliver effective and well-rounded solutions.
-        </p>
       </section>
 
       <section class="mb-16">
@@ -122,13 +110,8 @@
         <h3 class="text-2xl font-bold mb-4">
           EXPERTISE IN WEB DEVELOPMENT TECHNOLOGIES
         </h3>
-        <p class="mb-4">
-          Below is a summary of the skills I have acquired in the realm of web
-          development. Please feel free to reach out if you’d like to learn more
-          about my past projects or discuss any potential collaborations.
-        </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div v-for="stack in webstack" :key="stack.company" class="mb-4">
+          <div v-for="stack in webstack" class="mb-4">
             <h4 class="font-bold">{{ stack.name }}</h4>
             <component :is="stack.logo" class="mb-2" />
             <p class="text-sm text-gray-400">{{ stack.expertise }}</p>
@@ -139,8 +122,7 @@
       <section>
         <h3 class="text-4xl font-bold mb-4">GET IN TOUCH</h3>
         <p class="mb-4">
-          Let's talk about your project and how I can help you. If it has
-          anything to do with product design - shoot me a message at
+          Let's talk about your project and how I can help you.t
         </p>
         <button
           @click="emailMe"
