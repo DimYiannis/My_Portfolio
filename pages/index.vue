@@ -193,6 +193,14 @@ const projects = [
     info: "Built with Nuxt 3, Tailwind CSS and Node.js",
   },
   {
+    id: "YummyGreek",
+    img: "https://private-user-images.githubusercontent.com/107484245/415751656-4a7f0964-5a1a-4d95-9aa4-77a66b3bef85.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAxNTczNjYsIm5iZiI6MTc0MDE1NzA2NiwicGF0aCI6Ii8xMDc0ODQyNDUvNDE1NzUxNjU2LTRhN2YwOTY0LTVhMWEtNGQ5NS05YWE0LTc3YTY2YjNiZWY4NS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIyMVQxNjU3NDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yMjdmODllNWY5OGUwM2Q0ZWYxN2NmOTZlODljNzZjMTRjOTAzNWEwYTdmZDE1MmYyNmE5ZDc0Nzc2YTU2ZGU4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.dC6OSqCmP26YpQbOc0-U8OchT6Y_DDq5MemjQLWWbu8",
+    url: "https://yumgreek.netlify.app/",
+    giturl: "https://github.com/DimYiannis/YummyGreek",
+    title: "Food ordering app.",
+    info: "Built with Vue 3 and Tailwind CSS",
+  },
+  {
     id: "Meet-in-Thessaloniki",
     img: "https://repository-images.githubusercontent.com/605200372/253f22e6-55ad-4449-a55d-3cd0ff5746a7",
     url: "https://meet-in-thessaloniki.netlify.app/",
