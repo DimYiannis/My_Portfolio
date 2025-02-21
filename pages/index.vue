@@ -173,7 +173,7 @@ const projects = [
     img: "https://github.com/user-attachments/assets/1a553256-cba0-424f-b2b7-afd32ccd3598",
     url: "https://artsygallery.netlify.app",
     giturl: "https://github.com/DimYiannis/Arts",
-    title: "A diverse collection of artworks.",
+    title: "A diverse collection of artwork.",
     info: "Built with HTMX, Javascript, Tailwind CSS and HTML5",
   },
   {
