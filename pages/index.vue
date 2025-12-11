@@ -31,7 +31,7 @@
             Software Developer with a focus on building projects
             and learning new skills along the way. 
           </h2>
-          <p class="mb-4">Currently based in Thessaloniki, Greece.</p>
+          <p class="mb-4">Currently based in Amaterdam, NL.</p>
           <div class="flex space-x-4 mb-4">
             <NuxtLink
               to="https://github.com/DimYiannis"
