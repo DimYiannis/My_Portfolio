@@ -170,7 +170,7 @@ import Html5Logo from "~/components/Logos/Html.vue";
 const projects = [
    {
     id: "ema",
-    img: "https://private-user-images.githubusercontent.com/107484245/520534678-57678110-3bc1-471e-bb2a-fd5f38deaa03.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzc0MDg3NzUsIm5iZiI6MTc3NzQwODQ3NSwicGF0aCI6Ii8xMDc0ODQyNDUvNTIwNTM0Njc4LTU3Njc4MTEwLTNiYzEtNDcxZS1iYjJhLWZkNWYzOGRlYWEwMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDI4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQyOFQyMDM0MzVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xYTM4YjdlM2U3OGQ4YThjODE3NDZmM2Y2NGVhYmNjOWYxYThkNzNmYmUzYjQ0N2RiYmFjNGUyOTdiMzdiYTkxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.33wEzb1a435qpmMivOSjMIYPGLgPCqoUSVp686nQ6ug",
+    img: "https://github.com/user-attachments/assets/57678110-3bc1-471e-bb2a-fd5f38deaa03",
     url: "https://ema-kappa-topaz.vercel.app/",
     giturl: "https://github.com/DimYiannis/ema",
     title: "EMA — Real-Time Voice Intelligence.",
