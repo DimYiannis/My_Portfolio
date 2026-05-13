@@ -171,7 +171,7 @@ const projects = [
    {
     id: "ema",
     img: "https://github.com/user-attachments/assets/57678110-3bc1-471e-bb2a-fd5f38deaa03",
-    url: "https://ema-kappa-topaz.vercel.app/",
+    url: "https://ema-ii.vercel.app",
     giturl: "https://github.com/DimYiannis/ema",
     title: "EMA — Real-Time Voice Intelligence.",
     info: "Built with Nuxt.js, TypeScript, Three.js, Whisper, Llama 3.3 and Supabase",
