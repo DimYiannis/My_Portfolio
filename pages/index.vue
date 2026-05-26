@@ -235,6 +235,14 @@ import VuejsLogo from "~/components/Logos/Vuejs.vue";
 import Html5Logo from "~/components/Logos/Html.vue";
 
 const projects = [
+  {
+    id: "medlake",
+    img: "https://github.com/user-attachments/assets/57678110-3bc1-471e-bb2a-fd5f38deaa03",
+    url: "https://medlake.vercel.app/",
+    giturl: "https://github.com/DimYiannis/medlake",
+    title: "Freelance frontend project — full redesign of a Swiss medical fitness center.",
+    info: "Built with  Nuxt.js, Three.js, Tailwind CSS, Supabase and DeepL API"
+  },
    {
     id: "ema",
     img: "https://github.com/user-attachments/assets/57678110-3bc1-471e-bb2a-fd5f38deaa03",
