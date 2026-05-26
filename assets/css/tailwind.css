@@ -31,7 +31,9 @@
 
 @layer base {
     html,body {
+
         background-color: darkgray;
         color: white;
     }    
   }
+

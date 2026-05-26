@@ -1,4 +1,5 @@
 <template>
+
   <div class="min-h-screen bg-dark-gray text-white">
     <header class="p-4">
       <nav class="flex justify-between items-center">
@@ -118,7 +119,6 @@
             <p class="text-sm text-gray-400">{{ stack.expertise }}</p>
           </div>
         </div>
-      </section>
 
       <section>
         <h3 class="text-4xl font-bold mb-4">GET IN TOUCH</h3>
@@ -144,17 +144,84 @@
           >
             <LogosGithub />
           </NuxtLink>
-        </li>
-        <li>
+
           <NuxtLink
             to="https://www.linkedin.com/in/dim-yiannis/"
             class="text-white/40 hover:text-sky-500"
           >
             <LogosLinkein />
           </NuxtLink>
-        </li>
-      </ul>
-    </footer>
+        </div>
+      </nav>
+    </header>
+
+    <!--Hero section-->
+    <HeroSection />
+
+    <!--Skills section-->
+    <webstack />
+
+    <!--Projects-->
+    <Projects />
+
+    <!--Contact-->
+    <div
+      class="my-10 tablet:px-4 laptop:px-64 flex flex-col tablet:flex-row lgdesk:px-[550px] place-content-center desktop:justify-center"
+    >
+      <!--Contact details-->
+      <div
+        class="flex flex-col self-center tablet:self-start text-white text-center gap-10 my-10 w-1/2"
+      >
+        <h1 class="text-4xl font-semibold">Contact</h1>
+        <h2 class="">
+          Don't hesitate to contact me, i would love to help and contribute.
+          <br />
+          Please fill in the form and i will reach out to you as soon as
+          possible. <br />
+          Thank you for considering me for your project, i look forward to the
+          possibility of working with you.
+        </h2>
+      </div>
+
+      <!--Contact form-->
+      <div
+        id="contact"
+        class="m-5 text-white w-full tablet:w-1/2 flex self-center"
+      >
+        <ContactForm />
+      </div>
+    </div>
+
+    <!--Footer-->
+    <div>
+      <div
+        class="bg-transparent w-full flex flex-col mobile:flex-row mobile:justify-around justify-self-center py-5 desktop:justify-around"
+      >
+        <div
+          class="font-semibold text-white/40 hover:text-sky-500 justify-center flex"
+        >
+          <NuxtLink to="https://www.linkedin.com/in/dim-yiannis/"
+            >Yiannis Dimitrakopoulos</NuxtLink
+          >
+        </div>
+
+        <div class="flex gap-2 justify-center">
+          <NuxtLink
+            to="https://github.com/DimYiannis"
+            class="text-white/40 hover:text-sky-500"
+          >
+            <LogosGithub />
+          </NuxtLink>
+
+          <NuxtLink
+            to="https://www.linkedin.com/in/dim-yiannis/"
+            class="text-white/40 hover:text-sky-500"
+          >
+            <LogosLinkein />
+          </NuxtLink>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -168,6 +235,14 @@ import VuejsLogo from "~/components/Logos/Vuejs.vue";
 import Html5Logo from "~/components/Logos/Html.vue";
 
 const projects = [
+  {
+    id: "medlake",
+    img: "https://github.com/user-attachments/assets/57678110-3bc1-471e-bb2a-fd5f38deaa03",
+    url: "https://medlake.vercel.app/",
+    giturl: "https://github.com/DimYiannis/medlake",
+    title: "Freelance frontend project — full redesign of a Swiss medical fitness center.",
+    info: "Built with  Nuxt.js, Three.js, Tailwind CSS, Supabase and DeepL API"
+  },
    {
     id: "ema",
     img: "https://github.com/user-attachments/assets/57678110-3bc1-471e-bb2a-fd5f38deaa03",
@@ -282,3 +357,14 @@ const emailMe = () => {
 };
 
 </script>
+
+<style>
+/* Tooltip styles */
+[v-show] {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+[v-show].active {
+  opacity: 1;
+}
+</style>
