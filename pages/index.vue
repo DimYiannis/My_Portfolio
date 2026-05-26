@@ -170,7 +170,7 @@ import Html5Logo from "~/components/Logos/Html.vue";
 const projects = [
   {
     id: "medlake",
-    img: "https://github.com/user-attachments/assets/57678110-3bc1-471e-bb2a-fd5f38deaa03",
+    img: "https://github.com/user-attachments/assets/ad411746-5225-4839-bfbe-036a682e7375",
     url: "https://medlake.vercel.app/",
     giturl: "https://github.com/DimYiannis/medlake",
     title: "Freelance frontend project — full redesign of a Swiss medical fitness center.",
