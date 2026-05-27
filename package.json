@@ -18,6 +18,8 @@
     "tailwindcss": "^3.2.7"
   },
   "dependencies": {
-    "@nuxtjs/netlify-files": "^1.2.0"
+    "@nuxtjs/netlify-files": "^1.2.0",
+    "@types/three": "^0.184.1",
+    "three": "^0.184.0"
   }
 }
