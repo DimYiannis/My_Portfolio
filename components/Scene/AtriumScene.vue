@@ -97,77 +97,135 @@ const panelMeshes: THREE.Mesh[] = []
 let hoveredPanel:  THREE.Mesh | null = null
 
 // ─── Panel canvas texture ─────────────────────────────────────────
-function buildPanelTexture(project: typeof projects[0]): THREE.CanvasTexture {
-  const W = 512, H = 682
-  const c   = document.createElement('canvas')
-  c.width   = W; c.height = H
+const ROMAN = ['I','II','III','IV','V','VI']
+
+function buildPanelTexture(project: typeof projects[0], index: number): THREE.CanvasTexture {
+  const W = 512, H = 700
+  const c = document.createElement('canvas')
+  c.width = W; c.height = H
   const ctx = c.getContext('2d')!
 
-  // Background
-  ctx.fillStyle = '#0D0A05'
+  // ── Background
+  ctx.fillStyle = '#0B0804'
   ctx.fillRect(0, 0, W, H)
 
-  // Gold border
-  ctx.strokeStyle = '#C8A040'; ctx.lineWidth = 3
-  ctx.strokeRect(14, 14, W-28, H-28)
-  ctx.strokeStyle = '#7A6020'; ctx.lineWidth = 1
-  ctx.strokeRect(22, 22, W-44, H-44)
+  // ── Outer gold frame
+  ctx.strokeStyle = '#B8922E'; ctx.lineWidth = 2.5
+  ctx.strokeRect(12, 12, W - 24, H - 24)
+  ctx.strokeStyle = '#5A440E'; ctx.lineWidth = 1
+  ctx.strokeRect(18, 18, W - 36, H - 36)
 
-  // Image area
-  const imgH = 270
-  ctx.fillStyle = '#1A1408'
-  ctx.fillRect(30, 30, W-60, imgH)
+  // ── Image area with gradient overlay
+  const imgY = 24, imgH = 260
+  const imgX = 24, imgW = W - 48
+
+  // Dark placeholder
+  ctx.fillStyle = '#12100A'
+  ctx.fillRect(imgX, imgY, imgW, imgH)
+
+  // Decorative gradient over image area (visible before image loads)
+  const grad = ctx.createLinearGradient(imgX, imgY, imgX, imgY + imgH)
+  grad.addColorStop(0, 'rgba(30,20,8,0.0)')
+  grad.addColorStop(1, 'rgba(11,8,4,0.95)')
+  ctx.fillStyle = grad
+  ctx.fillRect(imgX, imgY, imgW, imgH)
+
+  // Roman numeral watermark in image area
+  ctx.fillStyle = 'rgba(184,146,46,0.12)'
+  ctx.font = `bold 130px Georgia, serif`
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText(ROMAN[index] ?? String(index + 1), W / 2, imgY + imgH / 2)
+
+  // Load real image on top
+  const tex = new THREE.CanvasTexture(c)
   const img = new Image()
-  img.onload = () => { ctx.drawImage(img, 30, 30, W-60, imgH); tex.needsUpdate = true }
+  img.crossOrigin = 'anonymous'
+  img.onload = () => {
+    ctx.drawImage(img, imgX, imgY, imgW, imgH)
+    // Re-apply gradient so title stays readable over image
+    ctx.fillStyle = grad
+    ctx.fillRect(imgX, imgY, imgW, imgH)
+    tex.needsUpdate = true
+  }
   img.src = project.image
 
-  // Ornamental divider
-  ctx.strokeStyle = '#C8A040'; ctx.lineWidth = 1
-  ctx.beginPath(); ctx.moveTo(50, 315); ctx.lineTo(W-50, 315); ctx.stroke()
+  // ── Ornamental divider
+  const divY = imgY + imgH + 18
+  ctx.strokeStyle = '#B8922E'; ctx.lineWidth = 1
+  ctx.beginPath(); ctx.moveTo(40, divY); ctx.lineTo(W - 40, divY); ctx.stroke()
+  // Dot in center
+  ctx.fillStyle = '#B8922E'
+  ctx.beginPath(); ctx.arc(W / 2, divY, 3, 0, Math.PI * 2); ctx.fill()
 
-  // Title
-  ctx.fillStyle = '#F0D890'
-  ctx.font = 'bold 24px Georgia, serif'
+  // ── Title
+  ctx.textBaseline = 'alphabetic'
+  ctx.fillStyle = '#F2DC8A'
   ctx.textAlign = 'center'
   const words = project.title.split(' ')
-  let line = '', y = 348
+  let line = '', ty = divY + 42
+  ctx.font = 'bold 26px Georgia, serif'
   for (const word of words) {
     const test = line ? line + ' ' + word : word
-    if (ctx.measureText(test).width > W-70) { ctx.fillText(line, W/2, y); line = word; y += 30 }
-    else line = test
+    if (ctx.measureText(test).width > W - 80) {
+      ctx.fillText(line, W / 2, ty); line = word; ty += 34
+    } else line = test
   }
-  ctx.fillText(line, W/2, y)
-  y += 18
+  ctx.fillText(line, W / 2, ty)
+  ty += 16
 
-  // Tags
+  // ── Tag pills
   ctx.font = '13px Georgia, serif'
-  let tx = 36, ty = y + 22
+  let tx = 32, tagY = ty + 22
   for (const tag of project.tags.slice(0, 5)) {
-    const tw = ctx.measureText(tag).width + 16
-    if (tx + tw > W - 36) { tx = 36; ty += 26 }
-    ctx.fillStyle = '#1C1408'
-    ctx.fillRect(tx, ty-14, tw, 20)
-    ctx.strokeStyle = '#C8A040'; ctx.lineWidth = 0.5
-    ctx.strokeRect(tx, ty-14, tw, 20)
-    ctx.fillStyle = '#C8A060'
-    ctx.fillText(tag, tx+8, ty)
-    tx += tw + 6
+    const tw = ctx.measureText(tag).width + 18
+    if (tx + tw > W - 32) { tx = 32; tagY += 28 }
+    // Pill bg
+    ctx.fillStyle = '#1E1508'
+    roundRect(ctx, tx, tagY - 14, tw, 22, 4)
+    ctx.fill()
+    ctx.strokeStyle = '#B8922E'; ctx.lineWidth = 0.8
+    roundRect(ctx, tx, tagY - 14, tw, 22, 4)
+    ctx.stroke()
+    ctx.fillStyle = '#C8A860'
+    ctx.fillText(tag, tx + 9, tagY)
+    tx += tw + 8
   }
 
-  // Buttons
-  const btnY = H - 58
-  ctx.fillStyle = '#0F2008'; ctx.fillRect(36, btnY, 190, 38)
-  ctx.strokeStyle = '#3A8020'; ctx.lineWidth = 1; ctx.strokeRect(36, btnY, 190, 38)
-  ctx.fillStyle = '#60B040'; ctx.font = 'bold 16px Georgia, serif'
-  ctx.fillText('View Live ↗', 131, btnY+24)
+  // ── Buttons
+  const btnY = H - 62
+  // Live button
+  ctx.fillStyle = '#0D2010'
+  roundRect(ctx, 32, btnY, 198, 40, 6); ctx.fill()
+  ctx.strokeStyle = '#2E7A1A'; ctx.lineWidth = 1
+  roundRect(ctx, 32, btnY, 198, 40, 6); ctx.stroke()
+  ctx.fillStyle = '#5EC840'; ctx.font = 'bold 15px Georgia, serif'
+  ctx.textAlign = 'center'
+  ctx.fillText('View Live  ↗', 131, btnY + 25)
 
-  ctx.fillStyle = '#080F20'; ctx.fillRect(W-226, btnY, 190, 38)
-  ctx.strokeStyle = '#204080'; ctx.lineWidth = 1; ctx.strokeRect(W-226, btnY, 190, 38)
-  ctx.fillStyle = '#4080C0'
-  ctx.fillText('GitHub', W-131, btnY+24)
+  // GitHub button
+  ctx.fillStyle = '#0A1228'
+  roundRect(ctx, W - 230, btnY, 198, 40, 6); ctx.fill()
+  ctx.strokeStyle = '#1E4A8A'; ctx.lineWidth = 1
+  roundRect(ctx, W - 230, btnY, 198, 40, 6); ctx.stroke()
+  ctx.fillStyle = '#4A8ADA'
+  ctx.fillText('GitHub', W - 131, btnY + 25)
 
-  const tex = new THREE.CanvasTexture(c)
   return tex
+}
+
+function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
+  ctx.beginPath()
+  ctx.moveTo(x + r, y)
+  ctx.lineTo(x + w - r, y)
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r)
+  ctx.lineTo(x + w, y + h - r)
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h)
+  ctx.lineTo(x + r, y + h)
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r)
+  ctx.lineTo(x, y + r)
+  ctx.quadraticCurveTo(x, y, x + r, y)
+  ctx.closePath()
 }
 
 // ─── Scene init ───────────────────────────────────────────────────
@@ -181,7 +239,7 @@ async function initScene() {
   renderer.shadowMap.enabled  = true
   renderer.shadowMap.type     = THREE.PCFShadowMap
   renderer.toneMapping        = THREE.ACESFilmicToneMapping
-  renderer.toneMappingExposure = 1.4
+  renderer.toneMappingExposure = 0.9
   renderer.outputColorSpace   = THREE.SRGBColorSpace
 
   scene  = new THREE.Scene()
@@ -196,51 +254,59 @@ async function initScene() {
   camera.position.set(0, WALK_Y, -10.5)
   updateCameraDirection()
 
-  // No HDRI (sky.hdr not present) — use ambient fill for reflections
-  scene.add(new THREE.AmbientLight(0xC8D0E0, 1.2))
+  // Ambient fill — low, so panels and shadows read clearly
+  scene.add(new THREE.AmbientLight(0xC8C0A8, 0.4))
 
   loadProgress.value = 15
 
   // ── Lights ───────────────────────────────────────────────────────
 
-  // Primary sun shaft — warm gold from above-left (simulates window light)
-  const sun = new THREE.DirectionalLight(0xFFD070, 3.5)
-  sun.position.set(-6, 8, -4)
+  // Primary sun shaft — warm gold from above-left
+  const sun = new THREE.DirectionalLight(0xFFD080, 1.8)
+  sun.position.set(-8, 10, -6)
   sun.castShadow = true
-  sun.shadow.mapSize.set(4096, 4096)
+  sun.shadow.mapSize.set(2048, 2048)
   sun.shadow.camera.near   = 0.5
   sun.shadow.camera.far    = 40
   sun.shadow.camera.left   = -14
   sun.shadow.camera.right  =  14
   sun.shadow.camera.top    =  14
   sun.shadow.camera.bottom = -14
-  sun.shadow.bias          = -0.0003
-  sun.shadow.radius        = 3       // soft shadow edges
+  sun.shadow.bias          = -0.001
   scene.add(sun)
 
-  // Secondary sun shaft from right side — creates cross-light drama
-  const sun2 = new THREE.DirectionalLight(0xFFE090, 1.2)
-  sun2.position.set(7, 6, 2)
-  sun2.castShadow = false
-  scene.add(sun2)
+  // Warm fill from opposite side — reduces harsh shadows
+  const fill = new THREE.DirectionalLight(0xFFE8C0, 0.5)
+  fill.position.set(6, 6, 4)
+  scene.add(fill)
 
-  // Cool sky fill from above — bounced ceiling light
-  const skyFill = new THREE.HemisphereLight(0xD0E0FF, 0x8A7A50, 0.5)
+  // Cool bounce off ceiling
+  const skyFill = new THREE.HemisphereLight(0xD0DCFF, 0x6A5A30, 0.35)
   scene.add(skyFill)
 
-  // Warm point lights near each panel — Y-up coords (X=width, Y=height, Z=depth)
-  const panelLightPositions = [
-    [-3.0, 3.2, 10.5], [0.0, 3.2, 10.5], [3.0, 3.2, 10.5],   // north wall
-    [ 4.5, 3.2,  5.0], [4.5, 3.2,  0.0], [4.5, 3.2, -5.0],   // east wall
+  // Gallery SpotLights — aimed at each panel from above
+  // North wall panels (Y-up: Z≈10.5, X = -3, 0, +3)
+  // East wall panels (Y-up: X≈4.5, Z = 5, 0, -5)
+  const spotTargets = [
+    { from: [-3.0, 5.5, 9.0],  at: [-3.0, 2.5, 10.8] },
+    { from: [ 0.0, 5.5, 9.0],  at: [ 0.0, 2.5, 10.8] },
+    { from: [ 3.0, 5.5, 9.0],  at: [ 3.0, 2.5, 10.8] },
+    { from: [ 3.5, 5.5, 5.0],  at: [ 4.8, 2.5,  5.0] },
+    { from: [ 3.5, 5.5, 0.0],  at: [ 4.8, 2.5,  0.0] },
+    { from: [ 3.5, 5.5,-5.0],  at: [ 4.8, 2.5, -5.0] },
   ]
-  panelLightPositions.forEach(([x, y, z]) => {
-    const pl = new THREE.PointLight(0xFFAA40, 0.8, 5, 2)
-    pl.position.set(x, y, z)
-    scene.add(pl)
+  spotTargets.forEach(({ from, at }) => {
+    const spot = new THREE.SpotLight(0xFFD090, 2.5, 12, Math.PI / 7, 0.4, 2)
+    spot.position.set(...from as [number, number, number])
+    const tgt = new THREE.Object3D()
+    tgt.position.set(...at as [number, number, number])
+    scene.add(tgt)
+    spot.target = tgt
+    scene.add(spot)
   })
 
-  // Subtle ambient fill so deep shadows aren't pure black
-  scene.add(new THREE.AmbientLight(0x604030, 0.3))
+  // Warm floor bounce — keeps deep areas from going pitch black
+  scene.add(new THREE.AmbientLight(0x5A3A18, 0.25))
 
   loadProgress.value = 30
 
@@ -260,28 +326,51 @@ async function initScene() {
         child.castShadow    = true
         child.receiveShadow = true
 
-        // Upgrade all materials to full PBR
+        const n = child.name
+
+        // Floor — dark matte stone; high roughness prevents specular blowout from directional lights
+        if (n === 'Floor') {
+          child.material = new THREE.MeshStandardMaterial({
+            color:            new THREE.Color(0x6A6E78),
+            roughness:        0.85,
+            metalness:        0.0,
+            envMapIntensity:  0.0,
+          })
+          return
+        }
+
+        // All other meshes — upgrade to full PBR, keep Blender color but tone down brightness
         if (child.material instanceof THREE.MeshStandardMaterial) {
-          child.material.envMapIntensity = 0.6
+          child.material.envMapIntensity = 0.4
           child.material.needsUpdate     = true
         }
 
         // Replace panel canvases with canvas textures
         if (child.userData.is_panel_canvas) {
           const pid     = child.userData.panel_id as string
-          const project = projects.find(p => p.id === pid)
+          const idx     = projects.findIndex(p => p.id === pid)
+          const project = idx >= 0 ? projects[idx] : null
           if (project) {
             child.material = new THREE.MeshStandardMaterial({
-              map:               buildPanelTexture(project),
-              roughness:         0.25,
+              map:               buildPanelTexture(project, idx),
+              roughness:         0.3,
               metalness:         0.0,
-              emissive:          new THREE.Color(0x2A1A04),
-              emissiveIntensity: 0.08,
+              emissive:          new THREE.Color(0x1A1004),
+              emissiveIntensity: 0.12,
             })
             panelMeshes.push(child)
           }
         }
       })
+
+      // Strip any lights/cameras Blender baked into the GLB — we supply our own
+      const toRemove: THREE.Object3D[] = []
+      gltf.scene.traverse((child) => {
+        if (child instanceof THREE.Light || child instanceof THREE.Camera) {
+          toRemove.push(child)
+        }
+      })
+      toRemove.forEach(obj => obj.removeFromParent())
 
       scene.add(gltf.scene)
       loadProgress.value = 100
