@@ -1,6 +1,5 @@
 <template>
   <div class="atrium-wrapper">
-    <!-- Loading screen -->
     <Transition name="fade">
       <div v-if="loading" class="loading-screen">
         <div class="loading-inner">
@@ -11,33 +10,28 @@
       </div>
     </Transition>
 
-    <!-- Three.js canvas -->
     <canvas ref="canvasRef" class="atrium-canvas" />
 
-    <!-- HUD -->
     <Transition name="fade">
       <div v-if="!loading" class="hud">
-        <span class="hud-hint">click a panel to explore · drag to look around</span>
+        <span class="hud-hint">WASD / arrows to walk · drag to look · click a panel</span>
       </div>
     </Transition>
 
-    <!-- Project modal -->
     <Transition name="slide-up">
       <div v-if="activeProject" class="project-modal" @click.self="closeModal">
         <div class="modal-inner">
           <button class="modal-close" @click="closeModal">✕</button>
-          <div class="modal-content">
-            <h2 class="modal-title">{{ activeProject.title }}</h2>
-            <div class="modal-tags">
-              <span v-for="tag in activeProject.tags" :key="tag" class="tag">{{ tag }}</span>
-            </div>
-            <div class="modal-preview">
-              <img :src="activeProject.image" :alt="activeProject.title" />
-            </div>
-            <div class="modal-links">
-              <a :href="activeProject.live" target="_blank" class="btn-live">View Live ↗</a>
-              <a :href="activeProject.github" target="_blank" class="btn-github">GitHub</a>
-            </div>
+          <h2 class="modal-title">{{ activeProject.title }}</h2>
+          <div class="modal-tags">
+            <span v-for="tag in activeProject.tags" :key="tag" class="tag">{{ tag }}</span>
+          </div>
+          <div class="modal-preview">
+            <img :src="activeProject.image" :alt="activeProject.title" />
+          </div>
+          <div class="modal-links">
+            <a :href="activeProject.live" target="_blank" class="btn-live">View Live ↗</a>
+            <a :href="activeProject.github" target="_blank" class="btn-github">GitHub</a>
           </div>
         </div>
       </div>
@@ -49,65 +43,21 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
 
-// ─── Projects data ───────────────────────────────────────────────
+// ─── Projects ────────────────────────────────────────────────────
 const projects = [
-  {
-    id: 'ema',
-    title: 'EMA — Real-Time Voice Intelligence',
-    tags: ['Nuxt.js', 'TypeScript', 'Three.js', 'Whisper', 'Llama 3.3', 'Supabase'],
-    live: 'https://ema-ii.vercel.app',
-    github: 'https://github.com/DimYiannis/ema',
-    image: '/previews/ema.jpg',
-  },
-  {
-    id: 'artsy',
-    title: 'Artsy Gallery',
-    tags: ['HTMX', 'JavaScript', 'Tailwind CSS', 'HTML5'],
-    live: 'https://artsygallery.netlify.app',
-    github: 'https://github.com/DimYiannis/Arts',
-    image: '/previews/artsy.jpg',
-  },
-  {
-    id: 'augusts',
-    title: "August's Clothing Store",
-    tags: ['Nuxt.js', 'Pinia', 'Tailwind CSS', 'Node.js'],
-    live: 'https://augustsv2.netlify.app',
-    github: 'https://github.com/DimYiannis/Augusts',
-    image: '/previews/augusts.jpg',
-  },
-  {
-    id: 'academia',
-    title: 'Academia — Scientific Platform',
-    tags: ['Nuxt 3', 'Tailwind CSS', 'Node.js'],
-    live: 'https://academiav2.netlify.app',
-    github: 'https://github.com/DimYiannis/academia_v2',
-    image: '/previews/academia.jpg',
-  },
-  {
-    id: 'yummy',
-    title: 'YummyGreek — Digital Menu',
-    tags: ['Vue 3', 'Tailwind CSS'],
-    live: 'https://yumgreek.netlify.app',
-    github: 'https://github.com/DimYiannis/YummyGreek',
-    image: '/previews/yummy.jpg',
-  },
-  {
-    id: 'thessaloniki',
-    title: 'Meet in Thessaloniki',
-    tags: ['Nuxt 3', 'Tailwind CSS'],
-    live: 'https://meet-in-thessaloniki.netlify.app',
-    github: 'https://github.com/DimYiannis/Meet-in-Thessaloniki',
-    image: '/previews/thessaloniki.jpg',
-  },
+  { id: 'ema',          title: 'EMA — Real-Time Voice Intelligence', tags: ['Nuxt.js','TypeScript','Three.js','Whisper','Llama 3.3','Supabase'], live: 'https://ema-ii.vercel.app',                        github: 'https://github.com/DimYiannis/ema',                  image: '/previews/ema.jpg' },
+  { id: 'artsy',        title: 'Artsy Gallery',                      tags: ['HTMX','JavaScript','Tailwind CSS'],                                  live: 'https://artsygallery.netlify.app',                    github: 'https://github.com/DimYiannis/Arts',                 image: '/previews/artsy.jpg' },
+  { id: 'augusts',      title: "August's Clothing Store",            tags: ['Nuxt.js','Pinia','Tailwind CSS','Node.js'],                          live: 'https://augustsv2.netlify.app',                       github: 'https://github.com/DimYiannis/Augusts',              image: '/previews/augusts.jpg' },
+  { id: 'academia',     title: 'Academia — Scientific Platform',     tags: ['Nuxt 3','Tailwind CSS','Node.js'],                                  live: 'https://academiav2.netlify.app',                      github: 'https://github.com/DimYiannis/academia_v2',          image: '/previews/academia.jpg' },
+  { id: 'yummy',        title: 'YummyGreek — Digital Menu',          tags: ['Vue 3','Tailwind CSS'],                                             live: 'https://yumgreek.netlify.app',                        github: 'https://github.com/DimYiannis/YummyGreek',           image: '/previews/yummy.jpg' },
+  { id: 'thessaloniki', title: 'Meet in Thessaloniki',               tags: ['Nuxt 3','Tailwind CSS'],                                            live: 'https://meet-in-thessaloniki.netlify.app',            github: 'https://github.com/DimYiannis/Meet-in-Thessaloniki', image: '/previews/thessaloniki.jpg' },
 ]
 
 // ─── State ───────────────────────────────────────────────────────
-const canvasRef    = ref<HTMLCanvasElement | null>(null)
-const loading      = ref(true)
-const loadProgress = ref(0)
+const canvasRef     = ref<HTMLCanvasElement | null>(null)
+const loading       = ref(true)
+const loadProgress  = ref(0)
 const activeProject = ref<typeof projects[0] | null>(null)
 const loadingMessages = [
   'Quarrying Carrara marble...',
@@ -117,283 +67,306 @@ const loadingMessages = [
 ]
 const loadingMessage = ref(loadingMessages[0])
 
-// ─── Three.js refs ────────────────────────────────────────────────
-let renderer: THREE.WebGLRenderer
-let scene:    THREE.Scene
-let camera:   THREE.PerspectiveCamera
-let controls: OrbitControls
-let animId:   number
-const panelMeshes: THREE.Mesh[] = []
-const raycaster = new THREE.Raycaster()
-const mouse     = new THREE.Vector2()
-let hoveredPanel: THREE.Mesh | null = null
+// ─── Three.js internals ───────────────────────────────────────────
+let renderer:  THREE.WebGLRenderer
+let scene:     THREE.Scene
+let camera:    THREE.PerspectiveCamera
+let animId:    number
 
-// ─── Canvas texture builder ───────────────────────────────────────
+// Navigation
+const keys: Record<string, boolean> = {}
+const WALK_SPEED  = 0.06
+const LOOK_SPEED  = 0.0018
+
+// Room bounds — Y-up (X=width, Y=height fixed, Z=depth)
+// GLB camera is at [0, 1.65, -10.5] looking toward +Z (north)
+const WALK_Y  = 1.65   // eye height stays constant
+const BOUNDS  = { minX: -4.5, maxX: 4.5, minZ: -10.5, maxZ: 10.5 }
+
+// Mouse look
+let isDragging  = false
+let prevMouseX  = 0
+let prevMouseY  = 0
+let yaw         = 0     // 0 = looking toward +Z (north/into the hall)
+let pitch       = 0
+
+// Raycasting
+const raycaster    = new THREE.Raycaster()
+const mouse        = new THREE.Vector2()
+const panelMeshes: THREE.Mesh[] = []
+let hoveredPanel:  THREE.Mesh | null = null
+
+// ─── Panel canvas texture ─────────────────────────────────────────
 function buildPanelTexture(project: typeof projects[0]): THREE.CanvasTexture {
   const W = 512, H = 682
-  const canvas = document.createElement('canvas')
-  canvas.width  = W
-  canvas.height = H
-  const ctx = canvas.getContext('2d')!
+  const c   = document.createElement('canvas')
+  c.width   = W; c.height = H
+  const ctx = c.getContext('2d')!
 
-  // Background — deep dark
+  // Background
   ctx.fillStyle = '#0D0A05'
   ctx.fillRect(0, 0, W, H)
 
-  // Inner border (gold)
-  ctx.strokeStyle = '#C8A040'
-  ctx.lineWidth = 3
-  ctx.strokeRect(14, 14, W - 28, H - 28)
-  ctx.strokeStyle = '#A07820'
-  ctx.lineWidth = 1
-  ctx.strokeRect(20, 20, W - 40, H - 40)
+  // Gold border
+  ctx.strokeStyle = '#C8A040'; ctx.lineWidth = 3
+  ctx.strokeRect(14, 14, W-28, H-28)
+  ctx.strokeStyle = '#7A6020'; ctx.lineWidth = 1
+  ctx.strokeRect(22, 22, W-44, H-44)
 
-  // Project image placeholder (grey until real images load)
-  const imgH = 280
+  // Image area
+  const imgH = 270
   ctx.fillStyle = '#1A1408'
-  ctx.fillRect(28, 28, W - 56, imgH)
-
-  // Try loading project image
+  ctx.fillRect(30, 30, W-60, imgH)
   const img = new Image()
-  img.onload = () => {
-    ctx.drawImage(img, 28, 28, W - 56, imgH)
-    tex.needsUpdate = true
-  }
+  img.onload = () => { ctx.drawImage(img, 30, 30, W-60, imgH); tex.needsUpdate = true }
   img.src = project.image
 
-  // Title area
-  ctx.fillStyle = '#C8A860'
-  ctx.font = 'bold 26px "Georgia", serif'
+  // Ornamental divider
+  ctx.strokeStyle = '#C8A040'; ctx.lineWidth = 1
+  ctx.beginPath(); ctx.moveTo(50, 315); ctx.lineTo(W-50, 315); ctx.stroke()
+
+  // Title
+  ctx.fillStyle = '#F0D890'
+  ctx.font = 'bold 24px Georgia, serif'
   ctx.textAlign = 'center'
-  // Word-wrap title
   const words = project.title.split(' ')
-  let line = '', y = 340
+  let line = '', y = 348
   for (const word of words) {
     const test = line ? line + ' ' + word : word
-    if (ctx.measureText(test).width > W - 60) {
-      ctx.fillText(line, W / 2, y)
-      line = word
-      y += 32
-    } else {
-      line = test
-    }
+    if (ctx.measureText(test).width > W-70) { ctx.fillText(line, W/2, y); line = word; y += 30 }
+    else line = test
   }
-  ctx.fillText(line, W / 2, y)
-
-  // Divider
-  ctx.strokeStyle = '#C8A040'
-  ctx.lineWidth = 1
-  ctx.beginPath()
-  ctx.moveTo(60, y + 20)
-  ctx.lineTo(W - 60, y + 20)
-  ctx.stroke()
+  ctx.fillText(line, W/2, y)
+  y += 18
 
   // Tags
-  ctx.fillStyle = '#8A7A50'
-  ctx.font = '16px "Georgia", serif'
-  let tagX = 40, tagY = y + 45
-  for (const tag of project.tags.slice(0, 4)) {
-    const tw = ctx.measureText(tag).width + 20
-    if (tagX + tw > W - 40) { tagX = 40; tagY += 28 }
-    ctx.fillStyle = '#1E180A'
-    ctx.fillRect(tagX, tagY - 16, tw, 22)
-    ctx.strokeStyle = '#C8A040'
-    ctx.lineWidth = 0.5
-    ctx.strokeRect(tagX, tagY - 16, tw, 22)
-    ctx.fillStyle = '#C8A860'
-    ctx.fillText(tag, tagX + 10, tagY)
-    tagX += tw + 8
+  ctx.font = '13px Georgia, serif'
+  let tx = 36, ty = y + 22
+  for (const tag of project.tags.slice(0, 5)) {
+    const tw = ctx.measureText(tag).width + 16
+    if (tx + tw > W - 36) { tx = 36; ty += 26 }
+    ctx.fillStyle = '#1C1408'
+    ctx.fillRect(tx, ty-14, tw, 20)
+    ctx.strokeStyle = '#C8A040'; ctx.lineWidth = 0.5
+    ctx.strokeRect(tx, ty-14, tw, 20)
+    ctx.fillStyle = '#C8A060'
+    ctx.fillText(tag, tx+8, ty)
+    tx += tw + 6
   }
 
-  // Bottom buttons
-  const btnY = H - 55
-  ctx.fillStyle = '#1A3010'
-  ctx.fillRect(40, btnY, 180, 36)
-  ctx.strokeStyle = '#40A030'
-  ctx.lineWidth = 1
-  ctx.strokeRect(40, btnY, 180, 36)
-  ctx.fillStyle = '#70C050'
-  ctx.font = 'bold 18px "Georgia", serif'
-  ctx.fillText('View Live ↗', 130, btnY + 23)
+  // Buttons
+  const btnY = H - 58
+  ctx.fillStyle = '#0F2008'; ctx.fillRect(36, btnY, 190, 38)
+  ctx.strokeStyle = '#3A8020'; ctx.lineWidth = 1; ctx.strokeRect(36, btnY, 190, 38)
+  ctx.fillStyle = '#60B040'; ctx.font = 'bold 16px Georgia, serif'
+  ctx.fillText('View Live ↗', 131, btnY+24)
 
-  ctx.fillStyle = '#0A1830'
-  ctx.fillRect(W - 220, btnY, 180, 36)
-  ctx.strokeStyle = '#3070C0'
-  ctx.lineWidth = 1
-  ctx.strokeRect(W - 220, btnY, 180, 36)
-  ctx.fillStyle = '#5090D0'
-  ctx.fillText('GitHub', W - 130, btnY + 23)
+  ctx.fillStyle = '#080F20'; ctx.fillRect(W-226, btnY, 190, 38)
+  ctx.strokeStyle = '#204080'; ctx.lineWidth = 1; ctx.strokeRect(W-226, btnY, 190, 38)
+  ctx.fillStyle = '#4080C0'
+  ctx.fillText('GitHub', W-131, btnY+24)
 
-  const tex = new THREE.CanvasTexture(canvas)
+  const tex = new THREE.CanvasTexture(c)
   return tex
 }
 
-// ─── Scene setup ─────────────────────────────────────────────────
+// ─── Scene init ───────────────────────────────────────────────────
 async function initScene() {
   const canvas = canvasRef.value!
 
-  // Renderer
-  renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
+  // Renderer — max quality
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' })
   renderer.setSize(window.innerWidth, window.innerHeight)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-  renderer.toneMapping = THREE.ACESFilmicToneMapping
-  renderer.toneMappingExposure = 1.2
-  renderer.shadowMap.enabled = true
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap
-  renderer.outputColorSpace = THREE.SRGBColorSpace
+  renderer.shadowMap.enabled  = true
+  renderer.shadowMap.type     = THREE.PCFShadowMap
+  renderer.toneMapping        = THREE.ACESFilmicToneMapping
+  renderer.toneMappingExposure = 1.4
+  renderer.outputColorSpace   = THREE.SRGBColorSpace
 
   scene  = new THREE.Scene()
-  scene.fog = new THREE.FogExp2(0xF5EED8, 0.018)
+  // NO sky background — solid dark to never show outside
+  scene.background = new THREE.Color(0x0A0806)
+  // Subtle warm interior fog — enhances depth without showing outside
+  scene.fog = new THREE.Fog(0x1A1208, 18, 28)
 
-  camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100)
-  camera.position.set(0, 10.5, 1.65)
-  camera.lookAt(0, -5, 1.65)
+  // Camera — Y-up standard, matching GLB coordinates
+  // GLB has Y=height, Z=depth. Start at south end (Z=-10.5), eye level (Y=1.65)
+  camera = new THREE.PerspectiveCamera(72, window.innerWidth / window.innerHeight, 0.05, 50)
+  camera.position.set(0, WALK_Y, -10.5)
+  updateCameraDirection()
 
-  // Controls
-  controls = new OrbitControls(camera, canvas)
-  controls.target.set(0, 0, 1.65)
-  controls.minPolarAngle = Math.PI * 0.25
-  controls.maxPolarAngle = Math.PI * 0.75
-  controls.minDistance   = 2
-  controls.maxDistance   = 18
-  controls.enableDamping = true
-  controls.dampingFactor = 0.06
-  controls.rotateSpeed   = 0.5
+  // No HDRI (sky.hdr not present) — use ambient fill for reflections
+  scene.add(new THREE.AmbientLight(0xC8D0E0, 1.2))
 
-  // HDRI environment (download from polyhaven.com/a/kloofendal_48d_partly_cloudy)
-  // If you don't have it yet, comment this block out and use the fallback below
-  try {
-    const pmremGenerator = new THREE.PMREMGenerator(renderer)
-    pmremGenerator.compileEquirectangularShader()
-    const rgbeLoader = new RGBELoader()
-    const hdrTexture = await new Promise<THREE.DataTexture>((resolve, reject) => {
-      rgbeLoader.load('/textures/sky.hdr', resolve, undefined, reject)
-    })
-    const envMap = pmremGenerator.fromEquirectangular(hdrTexture).texture
-    scene.environment = envMap
-    scene.background  = envMap
-    hdrTexture.dispose()
-    pmremGenerator.dispose()
-  } catch {
-    // Fallback gradient sky
-    scene.background = new THREE.Color(0x87CEEB)
-    const ambientFallback = new THREE.AmbientLight(0xC8D8FF, 1.5)
-    scene.add(ambientFallback)
-  }
+  loadProgress.value = 15
 
-  loadProgress.value = 20
+  // ── Lights ───────────────────────────────────────────────────────
+
+  // Primary sun shaft — warm gold from above-left (simulates window light)
+  const sun = new THREE.DirectionalLight(0xFFD070, 3.5)
+  sun.position.set(-6, 8, -4)
+  sun.castShadow = true
+  sun.shadow.mapSize.set(4096, 4096)
+  sun.shadow.camera.near   = 0.5
+  sun.shadow.camera.far    = 40
+  sun.shadow.camera.left   = -14
+  sun.shadow.camera.right  =  14
+  sun.shadow.camera.top    =  14
+  sun.shadow.camera.bottom = -14
+  sun.shadow.bias          = -0.0003
+  sun.shadow.radius        = 3       // soft shadow edges
+  scene.add(sun)
+
+  // Secondary sun shaft from right side — creates cross-light drama
+  const sun2 = new THREE.DirectionalLight(0xFFE090, 1.2)
+  sun2.position.set(7, 6, 2)
+  sun2.castShadow = false
+  scene.add(sun2)
+
+  // Cool sky fill from above — bounced ceiling light
+  const skyFill = new THREE.HemisphereLight(0xD0E0FF, 0x8A7A50, 0.5)
+  scene.add(skyFill)
+
+  // Warm point lights near each panel — Y-up coords (X=width, Y=height, Z=depth)
+  const panelLightPositions = [
+    [-3.0, 3.2, 10.5], [0.0, 3.2, 10.5], [3.0, 3.2, 10.5],   // north wall
+    [ 4.5, 3.2,  5.0], [4.5, 3.2,  0.0], [4.5, 3.2, -5.0],   // east wall
+  ]
+  panelLightPositions.forEach(([x, y, z]) => {
+    const pl = new THREE.PointLight(0xFFAA40, 0.8, 5, 2)
+    pl.position.set(x, y, z)
+    scene.add(pl)
+  })
+
+  // Subtle ambient fill so deep shadows aren't pure black
+  scene.add(new THREE.AmbientLight(0x604030, 0.3))
+
+  loadProgress.value = 30
+
+  loadProgress.value = 40
   loadingMessage.value = loadingMessages[1]
 
-  // Load GLTF
+  // ── Load GLB ─────────────────────────────────────────────────────
   const loader = new GLTFLoader()
   loader.load(
     '/models/atrium.glb',
     (gltf) => {
-      loadProgress.value = 70
+      loadProgress.value = 80
       loadingMessage.value = loadingMessages[3]
 
-      scene.add(gltf.scene)
-
-      // Find panel canvases and apply project textures
-      let panelIdx = 0
       gltf.scene.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          child.castShadow    = true
-          child.receiveShadow = true
+        if (!(child instanceof THREE.Mesh)) return
+        child.castShadow    = true
+        child.receiveShadow = true
 
-          // Check custom property exported from Blender
-          const userData = child.userData
-          if (userData.is_panel_canvas && panelIdx < projects.length) {
-            const project = projects[panelIdx]
-            const tex = buildPanelTexture(project)
+        // Upgrade all materials to full PBR
+        if (child.material instanceof THREE.MeshStandardMaterial) {
+          child.material.envMapIntensity = 0.6
+          child.material.needsUpdate     = true
+        }
+
+        // Replace panel canvases with canvas textures
+        if (child.userData.is_panel_canvas) {
+          const pid     = child.userData.panel_id as string
+          const project = projects.find(p => p.id === pid)
+          if (project) {
             child.material = new THREE.MeshStandardMaterial({
-              map: tex,
-              roughness: 0.3,
-              metalness: 0.0,
-              emissive: new THREE.Color(0x2A1F05),
-              emissiveIntensity: 0.05,
+              map:               buildPanelTexture(project),
+              roughness:         0.25,
+              metalness:         0.0,
+              emissive:          new THREE.Color(0x2A1A04),
+              emissiveIntensity: 0.08,
             })
-            child.userData.projectId = project.id
-            child.userData.projectIndex = panelIdx
             panelMeshes.push(child)
-            panelIdx++
           }
         }
       })
 
+      scene.add(gltf.scene)
       loadProgress.value = 100
-      setTimeout(() => { loading.value = false }, 600)
+      setTimeout(() => { loading.value = false }, 500)
     },
     (xhr) => {
-      const progress = 20 + (xhr.loaded / xhr.total) * 50
-      loadProgress.value = Math.round(progress)
-      const msgIdx = Math.floor((progress / 70) * (loadingMessages.length - 1))
-      loadingMessage.value = loadingMessages[Math.min(msgIdx, loadingMessages.length - 1)]
+      loadProgress.value = 40 + Math.round((xhr.loaded / xhr.total) * 40)
     },
     (err) => {
-      console.error('GLTF load error:', err)
+      console.error('GLB load error:', err)
       loading.value = false
     }
   )
 
-  // Lights (supplement baked lighting)
-  const sun = new THREE.DirectionalLight(0xFFD580, 2.0)
-  sun.position.set(-8, 6, -5)
-  sun.castShadow = true
-  sun.shadow.mapSize.width  = 2048
-  sun.shadow.mapSize.height = 2048
-  sun.shadow.camera.near = 0.5
-  sun.shadow.camera.far  = 50
-  sun.shadow.camera.left = sun.shadow.camera.bottom = -15
-  sun.shadow.camera.right = sun.shadow.camera.top = 15
-  scene.add(sun)
+  // ── Event listeners ───────────────────────────────────────────────
+  window.addEventListener('resize',      onResize)
+  window.addEventListener('keydown',     e => { keys[e.code] = true })
+  window.addEventListener('keyup',       e => { keys[e.code] = false })
+  canvas.addEventListener('mousedown',   onMouseDown)
+  canvas.addEventListener('mousemove',   onMouseMove)
+  canvas.addEventListener('mouseup',     () => { isDragging = false })
+  canvas.addEventListener('mouseleave',  () => { isDragging = false })
+  canvas.addEventListener('click',       onClick)
 
-  // Panel point lights (subtle warm glow)
-  projects.forEach((_, i) => {
-    const light = new THREE.PointLight(0xFFD580, 0.3, 4)
-    const isNorth = i < 3
-    light.position.set(
-      isNorth ? (i - 1) * 3.0 : 4.5,
-      isNorth ? -11.5 : (i - 3 - 1) * 6.0,
-      2.5
-    )
-    scene.add(light)
-  })
-
-  // Events
-  window.addEventListener('resize', onResize)
-  canvas.addEventListener('mousemove', onMouseMove)
-  canvas.addEventListener('click', onClick)
+  // Touch support
+  canvas.addEventListener('touchstart',  onTouchStart, { passive: true })
+  canvas.addEventListener('touchmove',   onTouchMove,  { passive: true })
+  canvas.addEventListener('touchend',    () => { isDragging = false })
 
   animate()
+}
+
+// ─── Camera direction from yaw/pitch (Y-up standard) ─────────────
+function updateCameraDirection() {
+  pitch = Math.max(-0.4, Math.min(0.4, pitch))
+  // yaw=0 → looking +Z (north/into the hall), Y=height
+  const dir = new THREE.Vector3(
+    Math.sin(yaw) * Math.cos(pitch),
+    Math.sin(pitch),
+    Math.cos(yaw) * Math.cos(pitch)
+  )
+  camera.lookAt(camera.position.clone().add(dir))
+}
+
+// ─── Clamp position inside room (Y-up) ───────────────────────────
+function clampPosition() {
+  camera.position.x = Math.max(BOUNDS.minX, Math.min(BOUNDS.maxX, camera.position.x))
+  camera.position.y = WALK_Y  // keep eye height constant
+  camera.position.z = Math.max(BOUNDS.minZ, Math.min(BOUNDS.maxZ, camera.position.z))
 }
 
 // ─── Animation loop ───────────────────────────────────────────────
 function animate() {
   animId = requestAnimationFrame(animate)
-  controls.update()
 
-  // Hover detection
+  // WASD / arrow key walking (Y-up: X=width, Z=depth)
+  if (!activeProject.value) {
+    const forward = new THREE.Vector3(Math.sin(yaw), 0, Math.cos(yaw)).normalize()
+    const right   = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw)).normalize()
+
+    if (keys['KeyW'] || keys['ArrowUp'])    camera.position.addScaledVector(forward, WALK_SPEED)
+    if (keys['KeyS'] || keys['ArrowDown'])  camera.position.addScaledVector(forward, -WALK_SPEED)
+    if (keys['KeyA'] || keys['ArrowLeft'])  camera.position.addScaledVector(right, -WALK_SPEED)
+    if (keys['KeyD'] || keys['ArrowRight']) camera.position.addScaledVector(right, WALK_SPEED)
+
+    clampPosition()
+    updateCameraDirection()
+  }
+
+  // Hover glow on panels
   raycaster.setFromCamera(mouse, camera)
-  const intersects = raycaster.intersectObjects(panelMeshes)
-
-  if (intersects.length > 0) {
-    const hit = intersects[0].object as THREE.Mesh
+  const hits = raycaster.intersectObjects(panelMeshes)
+  if (hits.length > 0) {
+    const hit = hits[0].object as THREE.Mesh
     if (hit !== hoveredPanel) {
-      // Reset previous
       if (hoveredPanel) {
-        const mat = hoveredPanel.material as THREE.MeshStandardMaterial
-        mat.emissiveIntensity = 0.05
+        (hoveredPanel.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.08
       }
       hoveredPanel = hit
-      const mat = hit.material as THREE.MeshStandardMaterial
-      mat.emissiveIntensity = 0.35
+      ;(hit.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.45
       document.body.style.cursor = 'pointer'
     }
   } else {
     if (hoveredPanel) {
-      const mat = hoveredPanel.material as THREE.MeshStandardMaterial
-      mat.emissiveIntensity = 0.05
+      (hoveredPanel.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.08
       hoveredPanel = null
     }
     document.body.style.cursor = 'default'
@@ -402,56 +375,51 @@ function animate() {
   renderer.render(scene, camera)
 }
 
-// ─── Event handlers ───────────────────────────────────────────────
+// ─── Mouse / touch handlers ───────────────────────────────────────
+function onMouseDown(e: MouseEvent) {
+  isDragging = true
+  prevMouseX = e.clientX
+  prevMouseY = e.clientY
+}
+
 function onMouseMove(e: MouseEvent) {
+  // Update raycaster mouse position
   const rect = canvasRef.value!.getBoundingClientRect()
   mouse.x =  ((e.clientX - rect.left) / rect.width)  * 2 - 1
   mouse.y = -((e.clientY - rect.top)  / rect.height) * 2 + 1
+
+  if (!isDragging) return
+  yaw   -= (e.clientX - prevMouseX) * LOOK_SPEED
+  pitch += (e.clientY - prevMouseY) * LOOK_SPEED
+  prevMouseX = e.clientX
+  prevMouseY = e.clientY
+}
+
+let touchStartX = 0, touchStartY = 0
+function onTouchStart(e: TouchEvent) {
+  isDragging  = true
+  touchStartX = e.touches[0].clientX
+  touchStartY = e.touches[0].clientY
+}
+function onTouchMove(e: TouchEvent) {
+  if (!isDragging) return
+  yaw   -= (e.touches[0].clientX - touchStartX) * LOOK_SPEED * 1.5
+  pitch += (e.touches[0].clientY - touchStartY) * LOOK_SPEED * 1.5
+  touchStartX = e.touches[0].clientX
+  touchStartY = e.touches[0].clientY
 }
 
 function onClick(e: MouseEvent) {
+  if (Math.abs(e.clientX - prevMouseX) > 4) return  // was a drag, not a click
   raycaster.setFromCamera(mouse, camera)
-  const intersects = raycaster.intersectObjects(panelMeshes)
-  if (intersects.length > 0) {
-    const hit = intersects[0].object
-    const idx = hit.userData.projectIndex
-    if (idx !== undefined) {
-      activeProject.value = projects[idx]
-      // Move camera toward panel
-      moveCameraToPanel(hit as THREE.Mesh)
-    }
+  const hits = raycaster.intersectObjects(panelMeshes)
+  if (hits.length > 0) {
+    const pid = hits[0].object.userData.panel_id as string
+    activeProject.value = projects.find(p => p.id === pid) ?? null
   }
 }
 
-function moveCameraToPanel(panel: THREE.Mesh) {
-  const worldPos = new THREE.Vector3()
-  panel.getWorldPosition(worldPos)
-  // Move camera 3 units in front of panel, same height
-  const normal = new THREE.Vector3(0, 1, 0)
-  panel.getWorldDirection(normal)
-  const target = worldPos.clone().add(normal.multiplyScalar(3))
-  // Simple lerp via setTimeout chain (no GSAP dependency)
-  const startPos = camera.position.clone()
-  const startTarget = controls.target.clone()
-  let t = 0
-  const step = () => {
-    t += 0.04
-    if (t >= 1) return
-    camera.position.lerpVectors(startPos, target, easeInOut(t))
-    controls.target.lerpVectors(startTarget, worldPos, easeInOut(t))
-    controls.update()
-    requestAnimationFrame(step)
-  }
-  step()
-}
-
-function easeInOut(t: number) {
-  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
-}
-
-function closeModal() {
-  activeProject.value = null
-}
+function closeModal() { activeProject.value = null }
 
 function onResize() {
   camera.aspect = window.innerWidth / window.innerHeight
@@ -460,126 +428,85 @@ function onResize() {
 }
 
 // ─── Lifecycle ────────────────────────────────────────────────────
-onMounted(() => { initScene() })
+onMounted(() => initScene())
 onBeforeUnmount(() => {
   cancelAnimationFrame(animId)
   renderer?.dispose()
-  window.removeEventListener('resize', onResize)
+  window.removeEventListener('resize',  onResize)
+  window.removeEventListener('keydown', e => { keys[e.code] = true })
+  window.removeEventListener('keyup',   e => { keys[e.code] = false })
 })
 </script>
 
 <style scoped>
-.atrium-wrapper {
-  position: fixed; inset: 0; overflow: hidden; background: #0D0A05;
-}
-.atrium-canvas {
-  display: block; width: 100%; height: 100%;
-}
+.atrium-wrapper { position: fixed; inset: 0; overflow: hidden; background: #0A0806; }
+.atrium-canvas  { display: block; width: 100%; height: 100%; }
 
-/* Loading */
 .loading-screen {
   position: absolute; inset: 0; z-index: 10;
-  background: #0D0A05;
+  background: #0A0806;
   display: flex; align-items: center; justify-content: center;
 }
-.loading-inner { text-align: center; width: 320px; }
-.loading-text {
-  font-family: 'Georgia', serif;
-  color: #C8A860; font-size: 1rem; margin: 1.5rem 0 1rem;
-  letter-spacing: 0.08em;
-}
-.loading-bar {
-  height: 2px; background: #2A200A; border-radius: 2px; overflow: hidden;
-}
-.loading-fill {
-  height: 100%; background: #C8A860;
-  transition: width 0.4s ease; border-radius: 2px;
-}
-
-/* Greek key border (CSS-only) */
+.loading-inner  { text-align: center; width: 300px; }
 .greek-key-border {
-  width: 200px; height: 20px; margin: 0 auto;
-  border-top: 2px solid #C8A860;
-  border-bottom: 2px solid #C8A860;
-  background: repeating-linear-gradient(
-    90deg,
-    #C8A860 0px, #C8A860 2px,
-    transparent 2px, transparent 8px,
-    #C8A860 8px, #C8A860 10px
-  );
+  width: 180px; height: 18px; margin: 0 auto 1.5rem;
+  border-top: 2px solid #C8A860; border-bottom: 2px solid #C8A860;
+  background: repeating-linear-gradient(90deg,#C8A860 0,#C8A860 2px,transparent 2px,transparent 8px,#C8A860 8px,#C8A860 10px);
   opacity: 0.5;
 }
+.loading-text {
+  font-family: Georgia, serif; color: #C8A860;
+  font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem;
+}
+.loading-bar  { height: 1px; background: #2A1A08; }
+.loading-fill { height: 100%; background: #C8A860; transition: width 0.3s ease; }
 
-/* HUD */
 .hud {
-  position: absolute; bottom: 2rem; left: 50%;
-  transform: translateX(-50%);
-  background: rgba(13, 10, 5, 0.7);
-  border: 1px solid rgba(200, 168, 96, 0.3);
-  border-radius: 20px; padding: 0.5rem 1.5rem;
-  pointer-events: none;
+  position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
+  background: rgba(10,8,6,0.75); border: 1px solid rgba(200,168,96,0.25);
+  border-radius: 20px; padding: 0.45rem 1.4rem; pointer-events: none;
+  backdrop-filter: blur(6px);
 }
-.hud-hint {
-  font-family: 'Georgia', serif;
-  color: #C8A860; font-size: 0.8rem; letter-spacing: 0.06em;
-}
+.hud-hint { font-family: Georgia, serif; color: #C8A860; font-size: 0.75rem; letter-spacing: 0.07em; }
 
-/* Modal */
 .project-modal {
   position: absolute; inset: 0; z-index: 20;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0,0,0,0.7);
   display: flex; align-items: flex-end; justify-content: center;
+  backdrop-filter: blur(4px);
 }
 .modal-inner {
-  background: #0D0A05;
-  border: 1px solid #C8A860;
-  border-bottom: none;
-  border-radius: 16px 16px 0 0;
-  width: 100%; max-width: 680px;
-  padding: 2rem;
-  position: relative;
+  background: #0D0A05; border: 1px solid #C8A860; border-bottom: none;
+  border-radius: 16px 16px 0 0; width: 100%; max-width: 640px;
+  padding: 2rem 2rem 2.5rem; position: relative;
 }
 .modal-close {
-  position: absolute; top: 1.2rem; right: 1.2rem;
-  background: none; border: 1px solid #C8A040;
-  color: #C8A860; width: 32px; height: 32px;
-  border-radius: 50%; cursor: pointer; font-size: 0.85rem;
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: 1px solid #C8A040; color: #C8A860;
+  width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 0.8rem;
 }
-.modal-title {
-  font-family: 'Georgia', serif;
-  color: #E8D080; font-size: 1.6rem; margin: 0 0 0.75rem;
-}
-.modal-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.modal-title  { font-family: Georgia, serif; color: #F0D890; font-size: 1.5rem; margin: 0 0 0.7rem; }
+.modal-tags   { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
 .tag {
-  font-family: 'Georgia', serif; font-size: 0.72rem;
-  color: #C8A860; border: 1px solid #604818;
-  padding: 0.2rem 0.6rem; border-radius: 4px;
-  background: #1A1005;
+  font-family: Georgia, serif; font-size: 0.7rem; color: #C8A860;
+  border: 1px solid #604818; padding: 0.15rem 0.55rem;
+  border-radius: 3px; background: #1A1005;
 }
 .modal-preview {
-  width: 100%; aspect-ratio: 16/9;
-  background: #1A1408; border-radius: 8px; overflow: hidden;
-  margin-bottom: 1rem;
+  width: 100%; aspect-ratio: 16/9; background: #1A1408;
+  border-radius: 6px; overflow: hidden; margin-bottom: 1rem;
 }
 .modal-preview img { width: 100%; height: 100%; object-fit: cover; }
-.modal-links { display: flex; gap: 0.75rem; }
+.modal-links  { display: flex; gap: 0.7rem; }
 .btn-live, .btn-github {
-  font-family: 'Georgia', serif; font-size: 0.9rem;
-  padding: 0.6rem 1.5rem; border-radius: 6px;
-  text-decoration: none; cursor: pointer;
+  font-family: Georgia, serif; font-size: 0.85rem;
+  padding: 0.55rem 1.4rem; border-radius: 5px; text-decoration: none;
 }
-.btn-live {
-  background: #1A3010; color: #7EC870;
-  border: 1px solid #3A6020;
-}
-.btn-github {
-  background: #0A1830; color: #5090D0;
-  border: 1px solid #1A3860;
-}
+.btn-live   { background: #1A3010; color: #7EC870; border: 1px solid #3A6020; }
+.btn-github { background: #0A1830; color: #5090D0; border: 1px solid #1A3860; }
 
-/* Transitions */
-.fade-enter-active, .fade-leave-active { transition: opacity 0.6s ease; }
-.fade-enter-from, .fade-leave-to { opacity: 0; }
-.slide-up-enter-active, .slide-up-leave-active { transition: transform 0.4s ease, opacity 0.4s ease; }
-.slide-up-enter-from, .slide-up-leave-to { transform: translateY(100%); opacity: 0; }
+.fade-enter-active, .fade-leave-active           { transition: opacity 0.5s ease; }
+.fade-enter-from,   .fade-leave-to               { opacity: 0; }
+.slide-up-enter-active, .slide-up-leave-active   { transition: transform 0.35s ease, opacity 0.35s ease; }
+.slide-up-enter-from,   .slide-up-leave-to       { transform: translateY(100%); opacity: 0; }
 </style>

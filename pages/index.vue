@@ -1,3 +1,5 @@
 <template>
-  <AtriumScene />
+  <ClientOnly>
+    <AtriumScene />
+  </ClientOnly>
 </template>

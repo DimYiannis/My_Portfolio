@@ -90,14 +90,6 @@ built from the `buildPanelTexture()` function (project title, tags, screenshot, 
 
 ```ts
 const projects = [
-    {
-    id: "medlake",
-    img: "https://github.com/user-attachments/assets/57678110-3bc1-471e-bb2a-fd5f38deaa03",
-    url: "https://medlake.vercel.app/",
-    giturl: "https://github.com/DimYiannis/medlake",
-    title: "Freelance frontend project — full redesign of a Swiss medical fitness center.",
-    info: "Built with  Nuxt.js, Three.js, Tailwind CSS, Supabase and DeepL API"
-  },
   {
     id: 'ema',
     title: 'EMA — Real-Time Voice Intelligence',
@@ -250,3 +242,53 @@ When working on this repo:
 ---
 
 *Last updated: May 2026*
+
+---
+
+## Photorealism goals (updated May 2026)
+
+The scene must feel like you are *inside* the room — no visible exterior, no sky.
+
+### Rendering pipeline
+- `THREE.WebGLRenderer` with `ACESFilmicToneMapping`, exposure 1.4
+- `EffectComposer` with these passes in order:
+  1. `RenderPass`
+  2. `SSAOPass` (kernelRadius 0.4, maxDistance 0.08) — contact shadows
+  3. `UnrealBloomPass` (strength 0.25, threshold 0.85) — subtle warm glow
+  4. `OutputPass` — colour space correction
+- `shadowMap.type = PCFSoftShadowMap`, shadow map 4096×4096
+- `envMapIntensity = 0.6` on all MeshStandardMaterial objects
+
+### Lighting setup (interior only)
+| Light | Type | Color | Intensity | Purpose |
+|---|---|---|---|---|
+| Sun shaft L | DirectionalLight | `#FFD070` | 3.5 | Main dramatic light from upper-left |
+| Sun shaft R | DirectionalLight | `#FFE090` | 1.2 | Cross-light from right, fills columns |
+| Sky bounce | HemisphereLight | `#D0E0FF` / `#8A7A50` | 0.5 | Soft ambient from ceiling |
+| Panel torches | PointLight ×6 | `#FFAA40` | 0.8, range 5 | Warm glow near each project panel |
+| Deep fill | AmbientLight | `#604030` | 0.3 | Prevents pure-black shadows |
+
+### Enclosed navigation rules
+- `scene.background = new THREE.Color(0x0A0806)` — solid dark, never a sky
+- `scene.environment = envMap` (HDRI) — reflections only, NOT background
+- `scene.fog = new THREE.Fog(0x1A1208, 18, 28)` — interior fog, hides far walls softly
+- Camera hard bounds (clampPosition): x ±4.0, y -10.5→10.5, z 0.8→2.4
+- No OrbitControls — first-person WASD + mouse drag only
+- Pitch clamped to ±0.35 rad (can't look through floor or ceiling)
+
+### Navigation controls
+- WASD / arrow keys: walk forward/back/strafe
+- Mouse drag: look around
+- Touch drag: mobile look
+- Click panel: open project modal
+- ESC / click outside modal: close modal
+
+### Rebuild GLB after any build_atrium.py change
+```bash
+/Applications/Blender.app/Contents/MacOS/Blender --background --python build_atrium.py \
+  && cp /tmp/atrium.glb /Users/yiannis/Documents/GitHub/My_Portfolio/public/models/atrium.glb
+```
+
+### Install post-processing (if not already installed)
+Three.js post-processing passes are included in the `three` package under `three/examples/jsm/postprocessing/`.
+No extra install needed — just import from there.

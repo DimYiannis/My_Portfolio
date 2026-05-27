@@ -6,7 +6,11 @@ export default defineNuxtConfig({
         link: [{ rel: 'icon', type: 'image/ico', href: '/favicon.ico' }]
     }
 },
-    modules: [
+    components: {
+    dirs: [{ path: '~/components', pathPrefix: false }]
+  },
+
+  modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/google-fonts', 
     ],
