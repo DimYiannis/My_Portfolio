@@ -100,15 +100,22 @@ const emailMe = () => {
   )}&body=${encodeURIComponent(body)}`;
 };
 
+const siteUrl = "https://yiannis-portfolio.netlify.app";
+const title = "Yiannis Dimitrakopoulos — Software Developer";
+const description =
+  "Portfolio of Yiannis Dimitrakopoulos, software developer and Codam College (42 Network) student in Amsterdam.";
+
 useHead({
-  title: "Yiannis Dimitrakopoulos — Software Developer",
+  title,
   meta: [
-    {
-      name: "description",
-      content:
-        "Portfolio of Yiannis Dimitrakopoulos, software developer and Codam College (42 Network) student in Amsterdam.",
-    },
+    { name: "description", content: description },
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: siteUrl },
+    { property: "og:image", content: `${siteUrl}/previews/ema.jpg` },
   ],
+  link: [{ rel: "canonical", href: siteUrl }],
 });
 </script>
 
