@@ -1,44 +1,46 @@
-# Nuxt 3 Minimal Starter
+# Yiannis Dimitrakopoulos — Portfolio
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Personal portfolio website. Dark single-page design built with Nuxt 3 and Tailwind CSS, deployed as a static site on Netlify.
 
+🔗 **Live:** https://yiannis-portfolio.netlify.app
 
-<img width="1456" alt="Screenshot 2024-09-30 at 3 17 30 PM" src="https://github.com/user-attachments/assets/63b3aaea-9f58-4946-8a1d-cba916914410">
+## Stack
 
+| Layer | Technology |
+|---|---|
+| Framework | Nuxt 3 (Vue 3, Composition API) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Fonts | Inter via `@nuxtjs/google-fonts` |
+| Deploy | Netlify (static, auto-deploy on push to `main`) |
 
+## Featured projects
 
+- **EMA** — real-time voice assistant with live transcription and LLM responses
+- **call me maybe** — LLM function calling via constrained decoding
+- **Medlake Training** — freelance website redesign (Nuxt 3, Three.js, CMS, multilingual)
+- **Codexion** — dining-philosophers concurrency simulation in C
+- **Academia** — daily AI research feed (arXiv + HuggingFace)
+- **Fly-in** — drone routing simulation with Dijkstra's algorithm
 
-## Setup
+## Development
 
-
-1. Clone the repo
-``` sh
-git clone https://github.com/DimYiannis/My_Portfolio
-```
-2. Install NPM packages
 ```sh
+git clone https://github.com/DimYiannis/My_Portfolio
+cd My_Portfolio
 npm install
-```
-3. Run NPM script
-
- Run app in development mode:
-``` sh 
-npm run dev
-```
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
+npm run dev        # dev server at localhost:3000
 ```
 
-Locally preview production build:
+## Build
 
-```bash
-npm run preview
+```sh
+npm run generate   # static generation (what Netlify runs)
+npm run preview    # preview the production build locally
 ```
-## Deploy Project
 
+## Contact
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- yiannisdimitrakopoulos@yahoo.com
+- [LinkedIn](https://www.linkedin.com/in/dim-yiannis/)
+- [GitHub](https://github.com/DimYiannis)
