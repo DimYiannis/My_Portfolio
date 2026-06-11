@@ -1,3 +1,46 @@
+# Yiannis Dimitrakopoulos — Portfolio
 
-<img width="1456" alt="Screenshot 2024-09-30 at 3 17 30 PM" src="https://github.com/user-attachments/assets/63b3aaea-9f58-4946-8a1d-cba916914410">
+Personal portfolio website. Dark single-page design built with Nuxt 3 and Tailwind CSS, deployed as a static site on Netlify.
 
+🔗 **Live:** https://yiannis-portfolio.netlify.app
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Nuxt 3 (Vue 3, Composition API) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Fonts | Inter via `@nuxtjs/google-fonts` |
+| Deploy | Netlify (static, auto-deploy on push to `main`) |
+
+## Featured projects
+
+- **EMA** — real-time voice assistant with live transcription and LLM responses
+- **call me maybe** — LLM function calling via constrained decoding
+- **Medlake Training** — freelance website redesign (Nuxt 3, Three.js, CMS, multilingual)
+- **Codexion** — dining-philosophers concurrency simulation in C
+- **Academia** — daily AI research feed (arXiv + HuggingFace)
+- **Fly-in** — drone routing simulation with Dijkstra's algorithm
+
+## Development
+
+```sh
+git clone https://github.com/DimYiannis/My_Portfolio
+cd My_Portfolio
+npm install
+npm run dev        # dev server at localhost:3000
+```
+
+## Build
+
+```sh
+npm run generate   # static generation (what Netlify runs)
+npm run preview    # preview the production build locally
+```
+
+## Contact
+
+- yiannisdimitrakopoulos@yahoo.com
+- [LinkedIn](https://www.linkedin.com/in/dim-yiannis/)
+- [GitHub](https://github.com/DimYiannis)

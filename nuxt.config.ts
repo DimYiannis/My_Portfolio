@@ -1,25 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import {resolve} from "path";
 export default defineNuxtConfig({
   app: {
     head: {
+        htmlAttrs: { lang: 'en' },
         link: [{ rel: 'icon', type: 'image/ico', href: '/favicon.ico' }]
     }
 },
-    modules: [
-        '@nuxtjs/tailwindcss',
-        '@nuxtjs/google-fonts', 
-    ],
+    components: {
+    dirs: [{ path: '~/components', pathPrefix: false }]
+  },
 
-    alias: {
-      "@": resolve(__dirname, "/"),
-    },
+  modules: [
+        '@nuxtjs/tailwindcss',
+        '@nuxtjs/google-fonts',
+    ],
 
     googleFonts: {
       families: {
-        'Open+Sans': true,
-        'Montserrat': {
-          wght: [400, 700]
+        Inter: {
+          wght: [400, 600, 700]
         }
       }
     },
