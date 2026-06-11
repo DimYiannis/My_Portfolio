@@ -4,6 +4,8 @@ Personal portfolio website. Dark single-page design built with Nuxt 3 and Tailwi
 
 🔗 **Live:** https://yiannis-portfolio.netlify.app
 
+![Portfolio screenshot](docs/screenshot.jpg)
+
 ## Stack
 
 | Layer | Technology |

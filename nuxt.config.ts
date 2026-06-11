@@ -3,7 +3,10 @@ export default defineNuxtConfig({
   app: {
     head: {
         htmlAttrs: { lang: 'en' },
-        link: [{ rel: 'icon', type: 'image/ico', href: '/favicon.ico' }]
+        link: [
+          { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+          { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any' }
+        ]
     }
 },
     components: {
@@ -28,7 +31,6 @@ export default defineNuxtConfig({
       cssPath: '~/assets/css/tailwind.css',
       configPath: 'tailwind.config',
       exposeConfig: false,
-      config: {},
       injectPosition: 0,
       viewer: true,
     },

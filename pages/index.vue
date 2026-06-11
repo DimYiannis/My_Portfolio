@@ -132,6 +132,7 @@ useHead({
             <NuxtLink
               to="https://github.com/DimYiannis"
               target="_blank"
+              aria-label="GitHub profile"
               class="text-white/40 transition-colors hover:text-sky-500"
             >
               <LogosGithub />
@@ -141,6 +142,7 @@ useHead({
             <NuxtLink
               to="https://www.linkedin.com/in/dim-yiannis/"
               target="_blank"
+              aria-label="LinkedIn profile"
               class="text-white/40 transition-colors hover:text-sky-500"
             >
               <LogosLinkedin />
@@ -179,7 +181,7 @@ useHead({
               View CV
             </a>
           </div>
-          <div class="flex space-x-2">
+          <div class="flex space-x-2" aria-hidden="true">
             <span class="h-4 w-4 rounded-full bg-blue-500"></span>
             <span class="h-4 w-4 rounded-full bg-red-500"></span>
             <span class="h-4 w-4 rounded-full bg-yellow-500"></span>
@@ -312,6 +314,7 @@ useHead({
           <NuxtLink
             to="https://github.com/DimYiannis"
             target="_blank"
+            aria-label="GitHub profile"
             class="text-white/40 transition-colors hover:text-sky-500"
           >
             <LogosGithub />
@@ -321,6 +324,7 @@ useHead({
           <NuxtLink
             to="https://www.linkedin.com/in/dim-yiannis/"
             target="_blank"
+            aria-label="LinkedIn profile"
             class="text-white/40 transition-colors hover:text-sky-500"
           >
             <LogosLinkedin />
