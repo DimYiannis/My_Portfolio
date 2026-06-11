@@ -24,14 +24,13 @@
 @tailwind utilities;
 
 :root {
-    --primary: rgb(70, 70, 70);
+    --primary: rgb(30, 30, 30);
     --secondary: rgb(11, 158, 202);
-} 
-
+}
 
 @layer base {
-    html,body {
-        background-color: darkgray;
+    html, body {
+        background-color: #121212;
         color: white;
-    }    
-  }
+    }
+}

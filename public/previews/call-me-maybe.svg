@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/>
+      <stop offset="1" stop-color="#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bg)"/>
+
+  <!-- prompt -->
+  <text x="80" y="90" font-family="Menlo, monospace" font-size="26" fill="#9ca3af">prompt:</text>
+  <text x="80" y="130" font-family="Menlo, monospace" font-size="28" fill="#e5e7eb">"What is the sum of 40 and 2?"</text>
+
+  <!-- arrow down -->
+  <line x1="120" y1="160" x2="120" y2="200" stroke="#38bdf8" stroke-width="3"/>
+  <polygon points="112,198 128,198 120,214" fill="#38bdf8"/>
+
+  <!-- logit mask row -->
+  <text x="80" y="250" font-family="Menlo, monospace" font-size="22" fill="#9ca3af">logits — invalid tokens masked to -inf</text>
+
+  <!-- masked tokens -->
+  <g font-family="Menlo, monospace" font-size="24" text-anchor="middle">
+    <rect x="80"  y="270" width="110" height="48" rx="8" fill="#7f1d1d" opacity="0.45"/>
+    <text x="135" y="302" fill="#fca5a5" opacity="0.6">hello</text>
+    <line x1="92" y1="294" x2="178" y2="294" stroke="#f87171" stroke-width="2" opacity="0.7"/>
+
+    <rect x="206" y="270" width="110" height="48" rx="8" fill="#7f1d1d" opacity="0.45"/>
+    <text x="261" y="302" fill="#fca5a5" opacity="0.6">maybe</text>
+    <line x1="218" y1="294" x2="304" y2="294" stroke="#f87171" stroke-width="2" opacity="0.7"/>
+
+    <rect x="332" y="270" width="110" height="48" rx="8" fill="#22c55e" opacity="0.25"/>
+    <rect x="332" y="270" width="110" height="48" rx="8" fill="none" stroke="#4ade80" stroke-width="2.5"/>
+    <text x="387" y="302" fill="#86efac">{"</text>
+
+    <rect x="458" y="270" width="110" height="48" rx="8" fill="#7f1d1d" opacity="0.45"/>
+    <text x="513" y="302" fill="#fca5a5" opacity="0.6">42</text>
+    <line x1="470" y1="294" x2="556" y2="294" stroke="#f87171" stroke-width="2" opacity="0.7"/>
+
+    <rect x="584" y="270" width="110" height="48" rx="8" fill="#7f1d1d" opacity="0.45"/>
+    <text x="639" y="302" fill="#fca5a5" opacity="0.6">sum(</text>
+    <line x1="596" y1="294" x2="682" y2="294" stroke="#f87171" stroke-width="2" opacity="0.7"/>
+  </g>
+
+  <!-- arrow down -->
+  <line x1="120" y1="350" x2="120" y2="390" stroke="#38bdf8" stroke-width="3"/>
+  <polygon points="112,388 128,388 120,404" fill="#38bdf8"/>
+
+  <!-- JSON output -->
+  <rect x="80" y="420" width="640" height="120" rx="12" fill="#0b1120" stroke="#1e3a5f" stroke-width="2"/>
+  <g font-family="Menlo, monospace" font-size="26">
+    <text x="104" y="468"><tspan fill="#e5e7eb">{</tspan><tspan fill="#7dd3fc">"function"</tspan><tspan fill="#e5e7eb">: </tspan><tspan fill="#86efac">"add"</tspan><tspan fill="#e5e7eb">,</tspan></text>
+    <text x="104" y="510"><tspan fill="#e5e7eb"> </tspan><tspan fill="#7dd3fc">"arguments"</tspan><tspan fill="#e5e7eb">: {</tspan><tspan fill="#7dd3fc">"a"</tspan><tspan fill="#e5e7eb">: </tspan><tspan fill="#fbbf24">40</tspan><tspan fill="#e5e7eb">, </tspan><tspan fill="#7dd3fc">"b"</tspan><tspan fill="#e5e7eb">: </tspan><tspan fill="#fbbf24">2</tspan><tspan fill="#e5e7eb">}}</tspan></text>
+  </g>
+
+  <!-- badge -->
+  <rect x="820" y="440" width="300" height="80" rx="12" fill="#22c55e" opacity="0.12"/>
+  <rect x="820" y="440" width="300" height="80" rx="12" fill="none" stroke="#4ade80" stroke-width="2" opacity="0.6"/>
+  <text x="970" y="473" font-family="Menlo, monospace" font-size="24" fill="#86efac" text-anchor="middle">schema-valid</text>
+  <text x="970" y="505" font-family="Menlo, monospace" font-size="28" fill="#4ade80" text-anchor="middle" font-weight="bold">100%</text>
+
+  <!-- decorative vocab grid right -->
+  <g opacity="0.18">
+    <g fill="#38bdf8">
+      <rect x="860" y="80" width="50" height="34" rx="6"/><rect x="922" y="80" width="50" height="34" rx="6"/><rect x="984" y="80" width="50" height="34" rx="6"/><rect x="1046" y="80" width="50" height="34" rx="6"/>
+      <rect x="860" y="126" width="50" height="34" rx="6"/><rect x="922" y="126" width="50" height="34" rx="6"/><rect x="984" y="126" width="50" height="34" rx="6"/><rect x="1046" y="126" width="50" height="34" rx="6"/>
+      <rect x="860" y="172" width="50" height="34" rx="6"/><rect x="922" y="172" width="50" height="34" rx="6"/><rect x="984" y="172" width="50" height="34" rx="6"/><rect x="1046" y="172" width="50" height="34" rx="6"/>
+    </g>
+  </g>
+</svg>
