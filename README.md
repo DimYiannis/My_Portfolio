@@ -43,6 +43,6 @@ npm run preview    # preview the production build locally
 
 ## Contact
 
-- yiannisdimitrakopoulos@yahoo.com
+- yiannisdimitrakopoulos@outlook.com
 - [LinkedIn](https://www.linkedin.com/in/dim-yiannis/)
 - [GitHub](https://github.com/DimYiannis)
