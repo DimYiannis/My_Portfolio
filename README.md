@@ -25,22 +25,6 @@ Personal portfolio website. Dark single-page design built with Nuxt 3 and Tailwi
 - **Academia** — daily AI research feed (arXiv + HuggingFace)
 - **Fly-in** — drone routing simulation with Dijkstra's algorithm
 
-## Development
-
-```sh
-git clone https://github.com/DimYiannis/My_Portfolio
-cd My_Portfolio
-npm install
-npm run dev        # dev server at localhost:3000
-```
-
-## Build
-
-```sh
-npm run generate   # static generation (what Netlify runs)
-npm run preview    # preview the production build locally
-```
-
 ## Contact
 
 - yiannisdimitrakopoulos@outlook.com
