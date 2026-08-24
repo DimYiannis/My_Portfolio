@@ -22,14 +22,14 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "ema",
-    title: "EMA — Real-Time Voice Intelligence",
+    id: "visual-lab",
+    title: "Visual Lab — Math, Algorithms & Concurrency Playground",
     description:
-      "Real-time voice assistant with live transcription and LLM responses.",
-    tags: ["Nuxt.js", "TypeScript", "Three.js", "Whisper", "Llama 3.3", "Supabase"],
-    live: "https://ema-ii.vercel.app",
-    github: "https://github.com/DimYiannis/ema",
-    image: "/previews/ema.jpg",
+      "Interactive lab for learning math, algorithms, data structures and concurrency visually — live curve transforms, step-through algorithm playback, and a deterministic thread scheduler for reproducing real race conditions and deadlocks.",
+    tags: ["Nuxt 3", "TypeScript", "Vue 3", "Vitest"],
+    live: "https://visual-labb.netlify.app/",
+    github: "https://github.com/DimYiannis/visual-lab",
+    image: "/previews/visual-lab.png",
   },
   {
     id: "call-me-maybe",
@@ -92,7 +92,7 @@ const webstack = shallowRef([
 ]);
 
 const emailMe = () => {
-  const email = "yiannisdimitrakopoulos@yahoo.com";
+  const email = "yiannisdimitrakopoulos@outlook.com";
   const subject = "Project Inquiry";
   const body = "Hello Yiannis,\n\nI would like to discuss a project with you.";
   window.location.href = `mailto:${email}?subject=${encodeURIComponent(
@@ -113,7 +113,7 @@ useHead({
     { property: "og:title", content: title },
     { property: "og:description", content: description },
     { property: "og:url", content: siteUrl },
-    { property: "og:image", content: `${siteUrl}/previews/ema.jpg` },
+    { property: "og:image", content: `${siteUrl}/previews/visual-lab.png` },
   ],
   link: [{ rel: "canonical", href: siteUrl }],
 });
@@ -161,7 +161,7 @@ useHead({
             new skills along the way.
           </h2>
           <p class="mb-6 text-white/60">
-            Studying at Codam College (42 Network) — currently based in
+            Studying at Codam College (42 Network) — based in
             Amsterdam, NL.
           </p>
           <div class="mb-6 flex flex-wrap gap-4">
