@@ -18,7 +18,7 @@ Personal portfolio website. Dark single-page design built with Nuxt 3 and Tailwi
 
 ## Featured projects
 
-- **EMA** — real-time voice assistant with live transcription and LLM responses
+- **Visual Lab** — interactive math, algorithms, data structures, and concurrency playground
 - **call me maybe** — LLM function calling via constrained decoding
 - **Medlake Training** — freelance website redesign (Nuxt 3, Three.js, CMS, multilingual)
 - **Codexion** — dining-philosophers concurrency simulation in C
