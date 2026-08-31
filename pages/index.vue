@@ -17,6 +17,7 @@ interface Project {
   live?: string;
   github: string;
   image?: string;
+  imageFit?: "cover" | "contain"; // "contain" for diagrams where cropping would cut off content
   snippet?: string; // shown on a code-style card when there is no screenshot
 }
 
@@ -60,14 +61,14 @@ const projects: Project[] = [
     image: "/previews/codexion.svg",
   },
   {
-    id: "academia",
-    title: "Academia — AI Research Feed",
+    id: "rag-against-the-machine",
+    title: "RAG Against the Machine — BM25 Retrieval over vLLM Source",
     description:
-      "Daily AI research feed — arXiv and HuggingFace papers in one place.",
-    tags: ["Nuxt 3", "Tailwind CSS", "Node.js"],
-    live: "https://academiav2.netlify.app",
-    github: "https://github.com/DimYiannis/academia_v2",
-    image: "/previews/academia.jpg",
+      "Retrieval-augmented generation over the vLLM codebase — custom identifier-aware tokenizer, AST-based chunking, tuned BM25 (k1/b grid search), IoU-scored recall@k eval, grounded answers via Qwen3-0.6B.",
+    tags: ["Python", "BM25", "RAG", "Qwen3"],
+    github: "https://github.com/DimYiannis/RAG-Against-the-Machine",
+    image: "/previews/rag-against-the-machine.png",
+    imageFit: "contain",
   },
   {
     id: "flyin",
@@ -218,7 +219,12 @@ useHead({
                 :src="project.image"
                 :alt="`Screenshot of ${project.title}`"
                 loading="lazy"
-                class="h-48 w-full object-cover object-top transition-opacity group-hover:opacity-90"
+                :class="[
+                  'h-48 w-full transition-opacity group-hover:opacity-90',
+                  project.imageFit === 'contain'
+                    ? 'bg-[#16213e] object-contain'
+                    : 'object-cover object-top',
+                ]"
               />
               <div
                 v-else
