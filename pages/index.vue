@@ -23,14 +23,14 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "visual-lab",
-    title: "Visual Lab — Math, Algorithms & Concurrency Playground",
+    id: "rag-against-the-machine",
+    title: "RAG Against the Machine — BM25 Retrieval over vLLM Source",
     description:
-      "Interactive lab for learning math, algorithms, data structures and concurrency visually — live curve transforms, step-through algorithm playback, and a deterministic thread scheduler for reproducing real race conditions and deadlocks.",
-    tags: ["Nuxt 3", "TypeScript", "Vue 3", "Vitest"],
-    live: "https://visual-labb.netlify.app/",
-    github: "https://github.com/DimYiannis/visual-lab",
-    image: "/previews/visual-lab.png",
+      "Retrieval-augmented generation over the vLLM codebase — custom identifier-aware tokenizer, AST-based chunking, tuned BM25 (k1/b grid search), IoU-scored recall@k eval, grounded answers via Qwen3-0.6B.",
+    tags: ["Python", "BM25", "RAG", "Qwen3"],
+    github: "https://github.com/DimYiannis/RAG-Against-the-Machine",
+    image: "/previews/rag-against-the-machine.png",
+    imageFit: "contain",
   },
   {
     id: "call-me-maybe",
@@ -40,6 +40,16 @@ const projects: Project[] = [
     tags: ["Python", "Qwen3", "Constrained Decoding", "LLM"],
     github: "https://github.com/DimYiannis/call_me_maybe",
     image: "/previews/call-me-maybe.svg",
+  },
+  {
+    id: "visual-lab",
+    title: "Visual Lab — Math, Algorithms & Concurrency Playground",
+    description:
+      "Interactive lab for learning math, algorithms, data structures and concurrency visually — live curve transforms, step-through algorithm playback, and a deterministic thread scheduler for reproducing real race conditions and deadlocks.",
+    tags: ["Nuxt 3", "TypeScript", "Vue 3", "Vitest"],
+    live: "https://visual-labb.netlify.app/",
+    github: "https://github.com/DimYiannis/visual-lab",
+    image: "/previews/visual-lab.png",
   },
   {
     id: "medlake",
@@ -59,16 +69,6 @@ const projects: Project[] = [
     tags: ["C", "POSIX Threads", "Mutexes", "Scheduling"],
     github: "https://github.com/DimYiannis/codexion",
     image: "/previews/codexion.svg",
-  },
-  {
-    id: "rag-against-the-machine",
-    title: "RAG Against the Machine — BM25 Retrieval over vLLM Source",
-    description:
-      "Retrieval-augmented generation over the vLLM codebase — custom identifier-aware tokenizer, AST-based chunking, tuned BM25 (k1/b grid search), IoU-scored recall@k eval, grounded answers via Qwen3-0.6B.",
-    tags: ["Python", "BM25", "RAG", "Qwen3"],
-    github: "https://github.com/DimYiannis/RAG-Against-the-Machine",
-    image: "/previews/rag-against-the-machine.png",
-    imageFit: "contain",
   },
   {
     id: "flyin",
