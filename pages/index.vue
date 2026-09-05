@@ -23,6 +23,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "call-me-maybe",
+    title: "call me maybe — LLM Function Calling",
+    description:
+      "Function calling for LLMs via constrained decoding — masks invalid tokens at the logit level so a 0.6B model emits 100% schema-compliant JSON.",
+    tags: ["Python", "Qwen3", "Constrained Decoding", "LLM"],
+    github: "https://github.com/DimYiannis/call_me_maybe",
+    image: "/previews/call-me-maybe.svg",
+  },
+  {
     id: "rag-against-the-machine",
     title: "RAG Against the Machine — BM25 Retrieval over vLLM Source",
     description:
@@ -33,13 +42,13 @@ const projects: Project[] = [
     imageFit: "contain",
   },
   {
-    id: "call-me-maybe",
-    title: "call me maybe — LLM Function Calling",
+    id: "constrained-graphrag",
+    title: "Constrained GraphRAG — Graph-Augmented Retrieval over vLLM",
     description:
-      "Function calling for LLMs via constrained decoding — masks invalid tokens at the logit level so a 0.6B model emits 100% schema-compliant JSON.",
-    tags: ["Python", "Qwen3", "Constrained Decoding", "LLM"],
-    github: "https://github.com/DimYiannis/call_me_maybe",
-    image: "/previews/call-me-maybe.svg",
+      "Lexical-first retrieval (BM25) fused with a schema-constrained knowledge graph — Qwen3-0.6B + Outlines extracts entities/relations into Neo4j, so graph traversal pulls in related chunks BM25 never lexically matched.",
+    tags: ["Python", "Neo4j", "Outlines", "Qwen3", "RAG"],
+    github: "https://github.com/DimYiannis/Constrained-GraphRag",
+    image: "/previews/constrained-graphrag.svg",
   },
   {
     id: "visual-lab",
@@ -69,15 +78,6 @@ const projects: Project[] = [
     tags: ["C", "POSIX Threads", "Mutexes", "Scheduling"],
     github: "https://github.com/DimYiannis/codexion",
     image: "/previews/codexion.svg",
-  },
-  {
-    id: "flyin",
-    title: "Fly-in — Drone Routing Simulation",
-    description:
-      "Routes a fleet of drones through connected zones using Dijkstra's algorithm and a turn-by-turn simulation engine with capacity constraints.",
-    tags: ["Python", "Dijkstra", "Simulation"],
-    github: "https://github.com/DimYiannis/-Fly-in",
-    image: "/previews/flyin.jpg",
   },
 ];
 

@@ -18,12 +18,12 @@ Personal portfolio website. Dark single-page design built with Nuxt 3 and Tailwi
 
 ## Featured projects
 
-- **Visual Lab** — interactive math, algorithms, data structures, and concurrency playground
 - **call me maybe** — LLM function calling via constrained decoding
+- **RAG Against the Machine** — BM25 retrieval over the vLLM codebase
+- **Constrained GraphRAG** — graph-augmented retrieval, Neo4j + Outlines-constrained extraction over vLLM
+- **Visual Lab** — interactive math, algorithms, data structures, and concurrency playground
 - **Medlake Training** — freelance website redesign (Nuxt 3, Three.js, CMS, multilingual)
 - **Codexion** — dining-philosophers concurrency simulation in C
-- **Academia** — daily AI research feed (arXiv + HuggingFace)
-- **Fly-in** — drone routing simulation with Dijkstra's algorithm
 
 ## Contact
 

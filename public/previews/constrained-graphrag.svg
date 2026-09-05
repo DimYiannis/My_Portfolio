@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/>
+      <stop offset="1" stop-color="#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bg)"/>
+
+  <text x="80" y="76" font-family="Menlo, monospace" font-size="26" fill="#9ca3af">query:</text>
+  <text x="80" y="112" font-family="Menlo, monospace" font-size="28" fill="#e5e7eb">"enable lora"</text>
+
+  <!-- edges (drawn first, under nodes) -->
+  <g stroke="#4ade80" stroke-width="2.5">
+    <line x1="230" y1="300" x2="400" y2="220"/>
+    <line x1="230" y1="300" x2="400" y2="380"/>
+  </g>
+  <g stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 6" opacity="0.85">
+    <line x1="400" y1="220" x2="600" y2="150"/>
+    <line x1="400" y1="220" x2="610" y2="270"/>
+    <line x1="400" y1="380" x2="610" y2="330"/>
+    <line x1="400" y1="380" x2="600" y2="460"/>
+  </g>
+
+  <!-- BM25 seed node -->
+  <circle cx="230" cy="300" r="46" fill="#22c55e" opacity="0.25"/>
+  <circle cx="230" cy="300" r="46" fill="none" stroke="#4ade80" stroke-width="3"/>
+  <text x="230" y="294" font-family="Menlo, monospace" font-size="17" fill="#86efac" text-anchor="middle">BM25</text>
+  <text x="230" y="315" font-family="Menlo, monospace" font-size="17" fill="#86efac" text-anchor="middle">seed</text>
+
+  <!-- entity-linked chunk nodes -->
+  <g font-family="Menlo, monospace" font-size="15" fill="#7dd3fc" text-anchor="middle">
+    <circle cx="400" cy="220" r="34" fill="#0b1120" stroke="#38bdf8" stroke-width="2.5"/>
+    <text x="400" y="226">chunk</text>
+
+    <circle cx="400" cy="380" r="34" fill="#0b1120" stroke="#38bdf8" stroke-width="2.5"/>
+    <text x="400" y="386">chunk</text>
+
+    <circle cx="600" cy="150" r="30" fill="#0b1120" stroke="#38bdf8" stroke-width="2" opacity="0.85"/>
+    <text x="600" y="156" font-size="14">chunk</text>
+
+    <circle cx="610" cy="270" r="30" fill="#0b1120" stroke="#38bdf8" stroke-width="2" opacity="0.85"/>
+    <text x="610" y="276" font-size="14">chunk</text>
+
+    <circle cx="610" cy="330" r="30" fill="#0b1120" stroke="#38bdf8" stroke-width="2" opacity="0.85"/>
+    <text x="610" y="336" font-size="14">chunk</text>
+
+    <circle cx="600" cy="460" r="30" fill="#0b1120" stroke="#38bdf8" stroke-width="2" opacity="0.85"/>
+    <text x="600" y="466" font-size="14">chunk</text>
+  </g>
+
+  <!-- shared entity label on the connecting edge -->
+  <rect x="280" y="234" width="150" height="34" rx="8" fill="#1e293b" opacity="0.9"/>
+  <text x="355" y="257" font-family="Menlo, monospace" font-size="15" fill="#fbbf24" text-anchor="middle">LoRAConfig</text>
+
+  <!-- traversal arrow -->
+  <line x1="700" y1="300" x2="760" y2="300" stroke="#38bdf8" stroke-width="3"/>
+  <polygon points="752,292 752,308 768,300" fill="#38bdf8"/>
+  <text x="730" y="270" font-family="Menlo, monospace" font-size="14" fill="#9ca3af" text-anchor="middle">MATCH</text>
+
+  <!-- schema-valid badge -->
+  <rect x="820" y="230" width="300" height="140" rx="12" fill="#0b1120" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="850" y="266" font-family="Menlo, monospace" font-size="16" fill="#9ca3af">extraction schema</text>
+  <g font-family="Menlo, monospace" font-size="18">
+    <text x="850" y="300"><tspan fill="#e5e7eb">{</tspan><tspan fill="#7dd3fc">"relation"</tspan><tspan fill="#e5e7eb">:</tspan></text>
+    <text x="850" y="326"><tspan fill="#86efac">"USES"</tspan><tspan fill="#e5e7eb">,</tspan></text>
+    <text x="850" y="352"><tspan fill="#7dd3fc">"target"</tspan><tspan fill="#e5e7eb">: </tspan><tspan fill="#fbbf24">"LoRAConfig"</tspan><tspan fill="#e5e7eb">}</tspan></text>
+  </g>
+  <rect x="820" y="400" width="300" height="60" rx="10" fill="#22c55e" opacity="0.12"/>
+  <rect x="820" y="400" width="300" height="60" rx="10" fill="none" stroke="#4ade80" stroke-width="2" opacity="0.6"/>
+  <text x="970" y="437" font-family="Menlo, monospace" font-size="20" fill="#4ade80" text-anchor="middle" font-weight="bold">Outlines-constrained</text>
+</svg>
