@@ -182,8 +182,7 @@ useHead({
       <section class="mb-20 flex flex-col items-center gap-10 md:flex-row">
         <div class="md:w-2/3 md:pr-8">
           <h2 class="mb-4 text-3xl font-bold leading-tight sm:text-4xl">
-            Software Developer with a focus on building projects and learning
-            new skills along the way.
+            Software engineer working across LLM systems and full-stack web.
           </h2>
           <p class="mb-6 text-white/60">
             Studying at Codam College (42 Network) — based in
