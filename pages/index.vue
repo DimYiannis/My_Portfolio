@@ -8,6 +8,12 @@ import JavascriptLogo from "~/components/Logos/Javascript.vue";
 import PythonLogo from "~/components/Logos/Python.vue";
 import ClangLogo from "~/components/Logos/Clang.vue";
 import SupabaseLogo from "~/components/Logos/Supabase.vue";
+import HuggingfaceLogo from "~/components/Logos/Huggingface.vue";
+import Neo4jLogo from "~/components/Logos/Neo4j.vue";
+import QwenLogo from "~/components/Logos/Qwen.vue";
+import ConstrainedDecodingLogo from "~/components/Logos/ConstrainedDecoding.vue";
+import RagLogo from "~/components/Logos/Rag.vue";
+import ConcurrencyLogo from "~/components/Logos/Concurrency.vue";
 
 interface Project {
   id: string;
@@ -23,13 +29,13 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "call-me-maybe",
-    title: "call me maybe — LLM Function Calling",
+    id: "constrained-graphrag",
+    title: "Constrained GraphRAG — Graph-Augmented Retrieval over vLLM",
     description:
-      "Function calling for LLMs via constrained decoding — masks invalid tokens at the logit level so a 0.6B model emits 100% schema-compliant JSON.",
-    tags: ["Python", "Qwen3", "Constrained Decoding", "LLM"],
-    github: "https://github.com/DimYiannis/call_me_maybe",
-    image: "/previews/call-me-maybe.svg",
+      "Lexical-first retrieval (BM25) fused with a schema-constrained knowledge graph — Qwen3-0.6B + Outlines extracts entities/relations into Neo4j, so graph traversal pulls in related chunks BM25 never lexically matched.",
+    tags: ["Python", "Neo4j", "Outlines", "Qwen3", "RAG"],
+    github: "https://github.com/DimYiannis/Constrained-GraphRag",
+    image: "/previews/constrained-graphrag.svg",
   },
   {
     id: "rag-against-the-machine",
@@ -42,13 +48,13 @@ const projects: Project[] = [
     imageFit: "contain",
   },
   {
-    id: "constrained-graphrag",
-    title: "Constrained GraphRAG — Graph-Augmented Retrieval over vLLM",
+    id: "call-me-maybe",
+    title: "call me maybe — LLM Function Calling",
     description:
-      "Lexical-first retrieval (BM25) fused with a schema-constrained knowledge graph — Qwen3-0.6B + Outlines extracts entities/relations into Neo4j, so graph traversal pulls in related chunks BM25 never lexically matched.",
-    tags: ["Python", "Neo4j", "Outlines", "Qwen3", "RAG"],
-    github: "https://github.com/DimYiannis/Constrained-GraphRag",
-    image: "/previews/constrained-graphrag.svg",
+      "Function calling for LLMs via constrained decoding — masks invalid tokens at the logit level so a 0.6B model emits 100% schema-compliant JSON.",
+    tags: ["Python", "Qwen3", "Constrained Decoding", "LLM"],
+    github: "https://github.com/DimYiannis/call_me_maybe",
+    image: "/previews/call-me-maybe.svg",
   },
   {
     id: "visual-lab",
@@ -81,15 +87,33 @@ const projects: Project[] = [
   },
 ];
 
-const webstack = shallowRef([
-  { name: "Vue.js", logo: VuejsLogo },
-  { name: "Nuxt 3", logo: NuxtjsLogo },
-  { name: "JavaScript", logo: JavascriptLogo },
-  { name: "Tailwind CSS", logo: TailwindLogo },
-  { name: "Node.js", logo: NodejsLogo },
-  { name: "Supabase", logo: SupabaseLogo },
-  { name: "Python", logo: PythonLogo },
-  { name: "C", logo: ClangLogo },
+const skillGroups = shallowRef([
+  {
+    category: "AI / ML",
+    items: [
+      { name: "Python", logos: [PythonLogo] },
+      { name: "Qwen3 / Hugging Face models", logos: [QwenLogo, HuggingfaceLogo] },
+      { name: "Constrained decoding", logos: [ConstrainedDecodingLogo] },
+      { name: "RAG", logos: [RagLogo] },
+      { name: "Neo4j / knowledge graphs", logos: [Neo4jLogo] },
+    ],
+  },
+  {
+    category: "Systems / Languages",
+    items: [
+      { name: "C", logos: [ClangLogo] },
+      { name: "POSIX threads / concurrency", logos: [ConcurrencyLogo] },
+    ],
+  },
+  {
+    category: "Web",
+    items: [
+      { name: "JavaScript / TypeScript", logos: [JavascriptLogo] },
+      { name: "Vue 3 / Nuxt 3", logos: [VuejsLogo, NuxtjsLogo] },
+      { name: "Tailwind CSS", logos: [TailwindLogo] },
+      { name: "Node.js / Supabase", logos: [NodejsLogo, SupabaseLogo] },
+    ],
+  },
 ]);
 
 const emailMe = () => {
@@ -285,14 +309,21 @@ useHead({
         <h3 class="mb-6 text-2xl font-bold tracking-wide">
           TECHNOLOGIES I WORK WITH
         </h3>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div
-            v-for="stack in webstack"
-            :key="stack.name"
-            class="flex flex-col items-center gap-3 rounded-lg bg-light-gray p-6"
-          >
-            <component :is="stack.logo" />
-            <h4 class="font-bold">{{ stack.name }}</h4>
+        <div v-for="group in skillGroups" :key="group.category" class="mb-8 last:mb-0">
+          <h4 class="mb-4 text-sm font-bold uppercase tracking-widest text-white/60">
+            {{ group.category }}
+          </h4>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div
+              v-for="item in group.items"
+              :key="item.name"
+              class="flex flex-col items-center gap-3 rounded-lg bg-light-gray p-6"
+            >
+              <div v-if="item.logos" class="flex items-center gap-3">
+                <component :is="logo" v-for="(logo, i) in item.logos" :key="i" />
+              </div>
+              <h4 class="text-center font-bold">{{ item.name }}</h4>
+            </div>
           </div>
         </div>
       </section>
