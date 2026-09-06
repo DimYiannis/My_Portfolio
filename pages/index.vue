@@ -205,14 +205,6 @@ useHead({
               View CV
             </a>
           </div>
-          <div class="flex space-x-2" aria-hidden="true">
-            <span class="h-4 w-4 rounded-full bg-blue-500"></span>
-            <span class="h-4 w-4 rounded-full bg-red-500"></span>
-            <span class="h-4 w-4 rounded-full bg-yellow-500"></span>
-            <span class="h-4 w-4 rounded-full bg-green-500"></span>
-            <span class="h-4 w-4 rounded-full bg-purple-500"></span>
-            <span class="h-4 w-4 rounded-full bg-pink-500"></span>
-          </div>
         </div>
         <div class="md:w-1/3">
           <img
