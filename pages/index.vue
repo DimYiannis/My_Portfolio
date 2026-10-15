@@ -116,14 +116,10 @@ const skillGroups = shallowRef([
   },
 ]);
 
-const emailMe = () => {
-  const email = "yiannisdimitrakopoulos@outlook.com";
-  const subject = "Project Inquiry";
-  const body = "Hello Yiannis,\n\nI would like to discuss a project with you.";
-  window.location.href = `mailto:${email}?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
-};
+const email = "yiannisdimitrakopoulos@outlook.com";
+const emailHref = `mailto:${email}?subject=${encodeURIComponent(
+  "Hello from your portfolio"
+)}`;
 
 const siteUrl = "https://yiannis-portfolio.netlify.app";
 const title = "Yiannis Dimitrakopoulos — Software Developer";
@@ -320,17 +316,28 @@ useHead({
       </section>
 
       <!-- Contact -->
-      <section>
-        <h3 class="mb-4 text-4xl font-bold">GET IN TOUCH</h3>
-        <p class="mb-4 text-white/60">
-          Let's talk about your project and how I can help you.
+      <section id="contact" class="rounded-lg bg-light-gray p-8 sm:p-10">
+        <h3 class="mb-6 text-2xl font-bold tracking-wide">GET IN TOUCH</h3>
+        <div class="flex flex-wrap items-center gap-4">
+          <a
+            :href="emailHref"
+            class="rounded bg-white px-4 py-2 font-medium text-black transition-colors hover:bg-gray-200"
+          >
+            Email me
+          </a>
+          <a
+            href="https://www.linkedin.com/in/dim-yiannis/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded border border-white px-4 py-2 transition-colors hover:bg-white hover:text-black"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <p class="mt-5 text-sm text-white/40">
+          or write directly to
+          <a :href="`mailto:${email}`" class="text-white/70 transition-colors hover:text-sky-500">{{ email }}</a>
         </p>
-        <button
-          @click="emailMe"
-          class="rounded bg-white px-4 py-2 font-medium text-black transition-colors duration-300 hover:bg-gray-200"
-        >
-          Email me
-        </button>
       </section>
     </main>
 
